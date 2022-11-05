@@ -1,6 +1,6 @@
-import TYPES from "../interfaces/inverseType";
-import Warrior from '../interfaces/Warrior';
-import container from "./DIContainer";
+import TYPES from "../interfaces/inverse-Type";
+import Warrior from '../interfaces/inverse-Warrior';
+import container from "./inverse-DIContainer";
 
 var ninja = container.get<Warrior>(TYPES.Warrior);
 

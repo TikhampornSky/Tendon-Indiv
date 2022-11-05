@@ -1,9 +1,9 @@
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
-import TYPES from '../interfaces/inverseType';
-import Warrior from '../interfaces/Warrior';
-import Weapon from '../interfaces/Weapon';
-import ThrowableWeapon from '../interfaces/ThrowableWeapon'
+import TYPES from '../interfaces/inverse-Type';
+import Warrior from '../interfaces/inverse-Warrior';
+import Weapon from '../interfaces/inverse-Weapon';
+import ThrowableWeapon from '../interfaces/inverse-ThrowableWeapon'
 
 @injectable()
 class Katana implements Weapon {

@@ -1,13 +1,21 @@
 import './App.css';
 import React from 'react';
-import logo from './logo.svg';
-import ShowInverse from './pages/inverseShow'
+//import logo from './logo.svg';
+import ShowInverse from './pages/inverse-Show'
+import ShowDataHandle from './pages/ShowDataView'
+import DataPost from './pages/SendData_post'
+import DataUpdateCall from './pages/SendData_update'
+import DataDeleteCall from './pages/SendData_delete'
 
 function App() {
   return (
     <div className="App">
-      <ShowInverse />
-      <header className="App-header">
+      < ShowInverse />
+      < DataPost />
+      < DataUpdateCall />
+      < DataDeleteCall />
+      < ShowDataHandle />
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -20,7 +28,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }

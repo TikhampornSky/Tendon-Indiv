@@ -1,12 +1,10 @@
 import React from "react"
-import { textt } from "../services/InverseGet"
-import { lala } from './tmp'
+import { textt } from "../services/inverse-Resolve"
 
 function ShowInverse() {
     return (
         <div>
             <h2> Hello Inversify</h2>
-            <p> { lala } </p>
             <p> { textt } </p>
         </div>
     ) 
