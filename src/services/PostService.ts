@@ -1,5 +1,5 @@
 //import {useState} from 'react'
-import { action, makeAutoObservable, observable } from "mobx"
+import { makeAutoObservable } from "mobx"
 import Post from "../interfaces/Post";
 
 class PostService {
@@ -25,12 +25,12 @@ class PostService {
         })
         .then((response) => {
             if (response.ok) {
-                console.log("Status is ", response.status)
+                // console.log("Status is ", response.status)
                 this.postStatus = response.status
             }
         })
         .catch((err) => {
-            console.log(err.message)
+            // console.log(err.message)
         });
 
         return this.postStatus
@@ -43,39 +43,3 @@ class PostService {
 }
 
 export default PostService
-
-
-// function PostData (title: string, body: string) {
-//     const [status, setStatus] = useState(0)
-
-//     const addPosts = async (title: string, body: string) => {
-//         await fetch('https://jsonplaceholder.typicode.com/posts', {
-//             method: 'POST',
-//             body: JSON.stringify({
-//                 title: title,
-//                 body: body,
-//                 userId: 77777777,
-//             }),
-//             headers: {
-//                 'Content-type': 'application/json; charset=UTF-8',
-//             },
-//         })
-//         .then((response) => {
-//             if (response.ok) {
-//                 console.log("Status is ", response.status)
-//                 setStatus(response.status)
-//             }
-//         })
-//         .catch((err) => {
-//             console.log(err.message)
-//         });
-//     };
-
-//     addPosts(title, body)
-
-//     return (
-//         status
-//     )
-// }
-
-// export default PostData

@@ -7,7 +7,8 @@ import PostDataHandle from './pages/PostDataView'
 // import DataPost from './pages/SendData_post'
 // import DataUpdateCall from './pages/SendData_update'
 import UpdateDataHandle from './pages/UpdatedataView'
-import DataDeleteCall from './pages/SendData_delete'
+import DeleteDataHandle from './pages/DeleteDataView'
+// import DataDeleteCall from './pages/SendData_delete'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       < ShowInverse />
       < PostDataHandle />
       < UpdateDataHandle />
-      < DataDeleteCall />
+      < DeleteDataHandle />
       < ShowDataHandle />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

@@ -42,7 +42,7 @@ interface ShowDataViewProps {
 }
 
 const UpdateDataView = observer(( {viewModel}: ShowDataViewProps) => {           //ส่งจาก dataViewModel มาแสดงผล
-    console.log(Date.now(), " => " , viewModel)
+    // console.log(Date.now(), " => " , viewModel)
     if (viewModel === 200) {
         return (
             <div>

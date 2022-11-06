@@ -19,7 +19,7 @@ class UpdateService {
             userId: updatePost.userId,
         })
         .then((res) => {
-            console.log("UpdateStatus is ", res.status)
+            // console.log("UpdateStatus is ", res.status)
             this.updateStatus = res.status
         })
         return this.updateStatus
