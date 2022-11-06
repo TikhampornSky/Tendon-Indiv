@@ -5,6 +5,16 @@ export interface userInterface {
     email: String,
     role: String,
     password: String,
+    createAt: Number,
+    updateAt: Number
+}
+
+export interface briefCurriculumInterface {
+    id: String,
+    curriculumName: String,
+    curriculumDescription: String,
+    accessLevel: String,
+    proGress: Number,
 }
 
 export interface curriculumInterface {
@@ -13,21 +23,29 @@ export interface curriculumInterface {
     curriculumDescription: String,
     accessLevel: String,
     proGress: Number,
-    subLearningNode: learningNodeInterface[],
-    type: String
+    subLearningNode: briefCurriculumInterface[],
 }
 
-export interface curriculaInterface {
+export interface briefLearningNodeInterface {
     id: String,
-    curriculumList: curriculumInterface[],
+    curriculums: briefCurriculumInterface[],
+    learningNodeName: String,
+    learningNodeDescription: String,
 }
 
 export interface learningNodeInterface {          
     id: String,
     learningNodeName: String,
     learningNodeDescription: String,
-    subNode: learningNodeInterface[],
-    nextLearningNodeId: String[],
-    previousLearningNodeId: String[],
-    curricula: curriculaInterface
+    curriculums: briefCurriculumInterface[]
+    subNode: nodeInterface[],
+    nextLearningNodeId: briefLearningNodeInterface[],
+    previousLearningNodeId: briefLearningNodeInterface[],
+}
+
+export interface nodeInterface {
+    id: String,
+    priority: String,
+    size: Number,
+    resources: String
 }
