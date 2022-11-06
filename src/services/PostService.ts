@@ -1,25 +1,81 @@
-//import {useState, useEffect, createContext} from "react"
-import axios from 'axios'
-import Post from '../interfaces/Post'
+//import {useState} from 'react'
 import { action, makeAutoObservable, observable } from "mobx"
+import Post from "../interfaces/Post";
 
 class PostService {
-    //const [posts, setPosts] = useState<Post[]>([{id: 0, userId: 0, title: '', body: ''}])
-    title_id = 0
-    response: Post[]
-    constructor(
-        //userService: UserIService                   //Inversify will be...
-    ) {
+    private postStatus = 0
+
+    constructor() {
         makeAutoObservable(this)
-        this.response = []
+        this.postStatus = 0
     }
 
+    async addPost(postNew: Post) {
+        await fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify({
+                title: postNew.title,
+                body: postNew.body,
+                userId: postNew.userId,
+                id: postNew.id
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        })
+        .then((response) => {
+            if (response.ok) {
+                console.log("Status is ", response.status)
+                this.postStatus = response.status
+            }
+        })
+        .catch((err) => {
+            console.log(err.message)
+        });
 
-    async getPosts(){
-        const tmp_response =  await axios.get<Post[]>('https://jsonplaceholder.typicode.com/posts')
-        this.response = tmp_response.data.slice(0,10)
-        return this.response
+        return this.postStatus
+    };
+
+    public getPostStatus() {
+        return this.postStatus
     }
+
 }
 
 export default PostService
+
+
+// function PostData (title: string, body: string) {
+//     const [status, setStatus] = useState(0)
+
+//     const addPosts = async (title: string, body: string) => {
+//         await fetch('https://jsonplaceholder.typicode.com/posts', {
+//             method: 'POST',
+//             body: JSON.stringify({
+//                 title: title,
+//                 body: body,
+//                 userId: 77777777,
+//             }),
+//             headers: {
+//                 'Content-type': 'application/json; charset=UTF-8',
+//             },
+//         })
+//         .then((response) => {
+//             if (response.ok) {
+//                 console.log("Status is ", response.status)
+//                 setStatus(response.status)
+//             }
+//         })
+//         .catch((err) => {
+//             console.log(err.message)
+//         });
+//     };
+
+//     addPosts(title, body)
+
+//     return (
+//         status
+//     )
+// }
+
+// export default PostData

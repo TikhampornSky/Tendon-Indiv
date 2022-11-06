@@ -11,8 +11,8 @@ import ShowDataViewModel from './ShowDataViewModel'
 const ShowDataHandle = observer(() => {              //observer converts React components into derivations of the data they render                
     //ส่งไปหา dataViewModel
     const [postsView, setPostsView] = useState<Post[]>([{id: 0, userId: 0, title: '', body: ''}])  
-    const postContext = useContext(containerContext.postService)
-    const viewModel = new ShowDataViewModel(postContext)
+    const getContext = useContext(containerContext.getService)
+    const viewModel = new ShowDataViewModel(getContext)
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.getPostsDataShow()
@@ -31,7 +31,7 @@ const ShowDataHandle = observer(() => {              //observer converts React c
 
     return (
         <div>
-            <p> My data is.. render </p>
+            {/* <p> My data is.. render </p> */}
             {/* {postsView.map((postData: Post) => (
                 <div key= {postData.id}>
                     <p>{postData.id} { '-->' } {postData.title}</p>

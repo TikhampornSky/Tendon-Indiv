@@ -1,7 +1,7 @@
 // import {useEffect, useState} from "react";
 import Post from "../interfaces/Post";
 import { makeAutoObservable } from "mobx"
-import PostService from "../services/PostService";
+import GetService from "../services/GetService";
 
 export interface ShowDataIViewModel {
     getPostsDataShow: () => Post[]
@@ -9,23 +9,23 @@ export interface ShowDataIViewModel {
 }
 
 class ShowDataViewModel{               //การเขียนจะคล้ายๆกับตอนเขียนคลาสของ Service
-    private postService: PostService 
+    private getService: GetService 
     private posts: Post[]
 
-    constructor(postService:PostService) {
+    constructor(getService:GetService) {
         makeAutoObservable(this)
         
-        this.postService = postService;
+        this.getService = getService;
         this.posts = [];
     }
 
-    ShowDataViewModelFunction = (() => {     
-        this.getPostsDataShow()
-        return this.posts
-    })
+    // ShowDataViewModelFunction = (() => {     
+    //     this.getPostsDataShow()
+    //     return this.posts
+    // })
 
     async getPostsDataShow() {
-        const tmpPost =  await this.postService.getPosts()
+        const tmpPost =  await this.getService.getPosts()
         this.posts = tmpPost
         return this.posts
     }
@@ -34,44 +34,10 @@ class ShowDataViewModel{               //การเขียนจะคล้
         return this.posts
     }
 
-    public setViewPosts(posts: Post[]) {
-        this.posts = posts
-    }
+    // public setViewPosts(posts: Post[]) {
+    //     this.posts = posts
+    // }
 
 }
-
-// class ShowDataClass {                           //จะถูกลบทิ้งไป
-//     postService = useContext(postServiceContext)                 //<---------------
-//     // state: posts = {
-//     //     posts: [{id: 0, userId: 0, title: '', body: ''}]
-//     // }
-    
-//     constructor() {
-//         makeAutoObservable(this, {
-//             ShowDataViewModel: action
-//         })
-//     }
-    
-//     ShowDataViewModel = (():ShowDataIViewModel => {     //ย้ายขึ้นมาเป็นอีกคลาส ที่เขียนอยู่ข้างบน
-//         const [posts, setPosts] = useState<Post[]>([{id: 0, userId: 0, title: '', body: ''}])        
-//         useEffect(() => {                                                                                       //use Effect จะถูกใช้เมื่อการ Render Component
-//             test()
-//         }, [])
-    
-//         const test = async () => {
-//             const posts = await this.postService.getPosts()
-//             setPosts(posts)
-//             posts.forEach(post=> {
-//                 console.log(post.title)
-//             });
-//         }
-    
-//         const submit = () => {}
-    
-//         return { posts, submit }
-//     })
-// }
-
-// export default ShowDataClass
 
 export default ShowDataViewModel

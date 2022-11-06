@@ -3,7 +3,8 @@ import React from 'react';
 //import logo from './logo.svg';
 import ShowInverse from './pages/inverse-Show'
 import ShowDataHandle from './pages/ShowDataView'
-import DataPost from './pages/SendData_post'
+import PostDataHandle from './pages/PostDataView'
+// import DataPost from './pages/SendData_post'
 import DataUpdateCall from './pages/SendData_update'
 import DataDeleteCall from './pages/SendData_delete'
 
@@ -11,7 +12,7 @@ function App() {
   return (
     <div className="App">
       < ShowInverse />
-      < DataPost />
+      < PostDataHandle />
       < DataUpdateCall />
       < DataDeleteCall />
       < ShowDataHandle />
