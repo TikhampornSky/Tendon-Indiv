@@ -27,7 +27,7 @@ const ShowDataHandle = observer(() => {              //observer converts React c
         setPostsView(viewModel.getViewPosts())
     })
     
-    console.log(Date.now(), postsView)          //Must use postView
+    // console.log(Date.now(), postsView)          //Must use postView
 
     return (
         <div>
@@ -49,7 +49,7 @@ interface ShowDataViewProps {
 }
 
 const ShowDataView = observer(({viewModel}: ShowDataViewProps) => {           //ส่งจาก dataViewModel มาแสดงผล
-   // console.log("-->", viewModel.getViewPosts())
+    console.log("-->", Date.now())
     return (
         <div>
             {viewModel.map((postData: Post) => (

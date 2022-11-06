@@ -5,7 +5,8 @@ import ShowInverse from './pages/inverse-Show'
 import ShowDataHandle from './pages/ShowDataView'
 import PostDataHandle from './pages/PostDataView'
 // import DataPost from './pages/SendData_post'
-import DataUpdateCall from './pages/SendData_update'
+// import DataUpdateCall from './pages/SendData_update'
+import UpdateDataHandle from './pages/UpdatedataView'
 import DataDeleteCall from './pages/SendData_delete'
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     <div className="App">
       < ShowInverse />
       < PostDataHandle />
-      < DataUpdateCall />
+      < UpdateDataHandle />
       < DataDeleteCall />
       < ShowDataHandle />
       {/* <header className="App-header">

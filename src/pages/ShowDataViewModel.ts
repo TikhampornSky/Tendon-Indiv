@@ -14,15 +14,9 @@ class ShowDataViewModel{               //การเขียนจะคล้
 
     constructor(getService:GetService) {
         makeAutoObservable(this)
-        
         this.getService = getService;
         this.posts = [];
     }
-
-    // ShowDataViewModelFunction = (() => {     
-    //     this.getPostsDataShow()
-    //     return this.posts
-    // })
 
     async getPostsDataShow() {
         const tmpPost =  await this.getService.getPosts()
@@ -33,10 +27,6 @@ class ShowDataViewModel{               //การเขียนจะคล้
     public getViewPosts() {
         return this.posts
     }
-
-    // public setViewPosts(posts: Post[]) {
-    //     this.posts = posts
-    // }
 
 }
 

@@ -22,7 +22,7 @@ const PostDataHandle = observer(() => {       //ส่งไปหา dataViewMo
         setpostStatus(viewModel.getPostStatus())
     })
     
-    console.log(Date.now(), postStatus)
+    console.log(Date.now(), "post is ", postStatus)
 
     if (postStatus === 201) {
         return (
