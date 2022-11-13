@@ -1,7 +1,9 @@
-import { action, makeAutoObservable, observable } from "mobx"
+import { makeAutoObservable } from "mobx"
 import axios from 'axios'
 import Post from '../interfaces/Post'
+import { injectable } from "inversify"
 
+@injectable()
 class UpdateService {
     private updateStatus = 0
 

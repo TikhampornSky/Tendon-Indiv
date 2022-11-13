@@ -1,14 +1,17 @@
-import Post from "../interfaces/Post";
+// import Post from "../interfaces/Post";
 import { makeAutoObservable } from "mobx"
 import DeleteService from "../services/DeleteService";
+
+import { Container } from "inversify";
+import TYPES from '../interfaces/inverse-Type'
 
 class DeleteDataViewModel {     
     private deleteService: DeleteService 
     private deleteStatus: Number
 
-    constructor(deleteService: DeleteService) {
+    constructor(container:Container) {
         makeAutoObservable(this)
-        this.deleteService = deleteService;
+        this.deleteService = container.get<DeleteService>(TYPES.DeleteService)
         this.deleteStatus = 0
     }
 

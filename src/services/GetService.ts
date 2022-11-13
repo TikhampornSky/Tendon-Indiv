@@ -1,8 +1,10 @@
 //import {useState, useEffect, createContext} from "react"
 import axios from 'axios'
 import Post from '../interfaces/Post'
-import { action, makeAutoObservable, observable } from "mobx"
+import { makeAutoObservable } from "mobx"
+import { injectable } from 'inversify'
 
+@injectable()
 class GetService {
     title_id = 0
     response: Post[]

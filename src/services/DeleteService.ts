@@ -1,6 +1,8 @@
 import { makeAutoObservable } from "mobx"
 import axios from 'axios'
+import { injectable } from "inversify"
 
+@injectable()
 class DeleteService {
     private deleteStatus = 0
 

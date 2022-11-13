@@ -7,12 +7,14 @@ import { useContext, useState, useEffect } from "react";
 import { containerContext } from '../services/Container'
 import ShowDataViewModel from './ShowDataViewModel'
 
+import { useContainer } from "../services/NewContainer";
+
 
 const ShowDataHandle = observer(() => {              //observer converts React components into derivations of the data they render                
     //ส่งไปหา dataViewModel
     const [postsView, setPostsView] = useState<Post[]>([{id: 0, userId: 0, title: '', body: ''}])  
     const getContext = useContext(containerContext.getService)
-    const viewModel = new ShowDataViewModel(getContext)
+    const viewModel = new ShowDataViewModel(useContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.getPostsDataShow()

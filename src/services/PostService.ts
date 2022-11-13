@@ -1,7 +1,9 @@
 //import {useState} from 'react'
+import { injectable } from "inversify";
 import { makeAutoObservable } from "mobx"
 import Post from "../interfaces/Post";
 
+@injectable()
 class PostService {
     private postStatus = 0
 

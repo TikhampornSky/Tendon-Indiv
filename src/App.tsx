@@ -9,15 +9,18 @@ import PostDataHandle from './pages/PostDataView'
 import UpdateDataHandle from './pages/UpdatedataView'
 import DeleteDataHandle from './pages/DeleteDataView'
 // import DataDeleteCall from './pages/SendData_delete'
+import { ContainerProvider} from './services/NewContainer'
 
 function App() {
   return (
     <div className="App">
-      < ShowInverse />
-      < PostDataHandle />
-      < UpdateDataHandle />
-      < DeleteDataHandle />
-      < ShowDataHandle />
+      <ContainerProvider>
+        < ShowInverse />
+        < PostDataHandle />
+        < UpdateDataHandle />
+        < DeleteDataHandle />
+        < ShowDataHandle />
+      </ContainerProvider>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

@@ -7,12 +7,15 @@ import { useContext, useState, useEffect } from "react";
 import { containerContext } from '../services/Container'
 import UpdateDataViewModel from './UpdateDataViewModel'
 
+import { useContainer } from "../services/NewContainer";
+
 
 const UpdateDataHandle = observer(() => {       //ส่งไปหา dataViewModel
     const [updateStatus, setupdateStatus] = useState<Number>(0)  
-    const updateContext = useContext(containerContext.updateService)
+    // const updateContext = useContext(containerContext.updateService)
     const dataOUT = GetDataUpdateOut()
-    const viewModel = new UpdateDataViewModel(updateContext, dataOUT)
+    // const viewModel = new UpdateDataViewModel(updateContext, dataOUT)
+    const viewModel = new UpdateDataViewModel( useContainer(), dataOUT )
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.updateData(dataOUT.id)

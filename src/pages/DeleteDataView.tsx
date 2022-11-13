@@ -6,10 +6,12 @@ import { useContext, useState, useEffect } from "react";
 import { containerContext } from '../services/Container'
 import DeleteDataViewModel from './DeleteDataViewModel'
 
+import { useContainer } from "../services/NewContainer";
+
 const DeleteDataHandle = observer(() => {       //ส่งไปหา dataViewModel
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
-    const deleteContext = useContext(containerContext.deleteService)
-    const viewModel = new DeleteDataViewModel(deleteContext)
+    // const deleteContext = useContext(containerContext.deleteService)
+    const viewModel = new DeleteDataViewModel( useContainer() )
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.deleteData(GetIDDelete())

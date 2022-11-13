@@ -7,12 +7,13 @@ import { useContext, useState, useEffect } from "react";
 import { containerContext } from '../services/Container'
 import PostDataViewModel from './PostDataViewModel'
 
+import { useContainer } from "../services/NewContainer";
 
 const PostDataHandle = observer(() => {       //ส่งไปหา dataViewModel
     const [postStatus, setpostStatus] = useState<Number>(0)  
     const postContext = useContext(containerContext.postService)
     const dataOUT = GetDataSendOut()
-    const viewModel = new PostDataViewModel(postContext, dataOUT)
+    const viewModel = new PostDataViewModel( useContainer(), dataOUT)
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.postData()

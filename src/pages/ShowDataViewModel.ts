@@ -3,6 +3,9 @@ import Post from "../interfaces/Post";
 import { makeAutoObservable } from "mobx"
 import GetService from "../services/GetService";
 
+import { Container } from "inversify";
+import TYPES from '../interfaces/inverse-Type'
+
 export interface ShowDataIViewModel {
     getPostsDataShow: () => Post[]
     getViewPosts: () => Post[]
@@ -12,12 +15,12 @@ class ShowDataViewModel{               //การเขียนจะคล้
     private getService: GetService 
     private posts: Post[]
 
-    constructor(getService:GetService) {
+    constructor(container: Container) {
         makeAutoObservable(this)
-        this.getService = getService;
+        this.getService = container.get<GetService>(TYPES.GetService)
         this.posts = [];
     }
-
+    
     async getPostsDataShow() {
         const tmpPost =  await this.getService.getPosts()
         this.posts = tmpPost
