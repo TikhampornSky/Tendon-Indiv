@@ -20,7 +20,7 @@ const DeleteDataHandle = observer(() => {       //ส่งไปหา dataView
         setDeleteStatus(viewModel.getDeleteStatus())
     })
 
-    console.log("Delete Status: ", deleteStatus)
+    // console.log("Delete Status: ", deleteStatus)
     if (deleteStatus === 200) {
         return (
             <div>

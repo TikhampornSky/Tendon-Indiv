@@ -1,4 +1,4 @@
-export interface user {
+export interface User {
     type: string
     id: string
     firstName: string
@@ -9,7 +9,7 @@ export interface user {
     updateAt: string
 }
 
-export interface course {
+export interface Course {
     id: string
     name: string
     description: string
@@ -19,7 +19,7 @@ export interface course {
     lesssons: string[]
 }
 
-export interface lesson {
+export interface Lesson {
     id: string
     name: string
     description: string
@@ -31,10 +31,16 @@ export interface lesson {
     prevLesson: string[]
 }
 
-export interface node{
+export interface Node{
     id: string
     type: string
     data: string
     createBy: string
     updateAt: string
 }
+
+let TYPES = {
+    AuthService: Symbol("AuthService"),
+};
+
+export default TYPES

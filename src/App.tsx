@@ -11,9 +11,16 @@ import DeleteDataHandle from './pages_mock/DeleteDataView'
 // import DataDeleteCall from './pages/SendData_delete'
 import { ContainerProvider} from './services_mock/NewContainer'
 
+import AuthHandle from './pages/AuthDataView';
+import { ContainerProviderTendon } from './service/container';
+
 function App() {
   return (
     <div className="App">
+      <ContainerProviderTendon>
+        < AuthHandle />
+      </ContainerProviderTendon>
+
       <ContainerProvider>
         < ShowInverse />
         < PostDataHandle />

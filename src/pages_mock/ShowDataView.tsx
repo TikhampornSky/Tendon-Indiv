@@ -36,7 +36,7 @@ interface ShowDataViewProps {
 }
 
 const ShowDataView = observer(({viewModel}: ShowDataViewProps) => {           //ส่งจาก dataViewModel มาแสดงผล
-    console.log("-->", Date.now())
+    // console.log("-->", Date.now())
     return (
         <div>
             {viewModel.map((postData: Post) => (
