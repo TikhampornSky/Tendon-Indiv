@@ -1,6 +1,6 @@
 import Post from "../interfaces/Post";
 import { makeAutoObservable } from "mobx"
-import PostService from "../services/PostService";
+import PostService from "../services_mock/PostService";
 
 import { Container } from "inversify";
 import TYPES from '../interfaces/inverse-Type'

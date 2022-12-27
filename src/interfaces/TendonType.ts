@@ -1,51 +1,40 @@
-export interface userInterface {
-    id: String,
-    firstName: String,
-    lastName: String,
-    email: String,
-    role: String,
-    password: String,
-    createAt: Number,
-    updateAt: Number
+export interface user {
+    type: string
+    id: string
+    firstName: string
+    lastName: string
+    email: string
+    role: string
+    createAt: string
+    updateAt: string
 }
 
-export interface briefCurriculumInterface {
-    id: String,
-    curriculumName: String,
-    curriculumDescription: String,
-    accessLevel: String,
-    proGress: Number,
+export interface course {
+    id: string
+    name: string
+    description: string
+    access: string
+    createBy: string
+    updateAt: string
+    lesssons: string[]
 }
 
-export interface curriculumInterface {
-    id: String,
-    curriculumName: String,
-    curriculumDescription: String,
-    accessLevel: String,
-    proGress: Number,
-    subLearningNode: briefCurriculumInterface[],
+export interface lesson {
+    id: string
+    name: string
+    description: string
+    access: string
+    createBy: string
+    updateAt: string
+    nodes: string[]
+    nextLesson: string[]
+    prevLesson: string[]
 }
 
-export interface briefLearningNodeInterface {
-    id: String,
-    curriculums: briefCurriculumInterface[],
-    learningNodeName: String,
-    learningNodeDescription: String,
-}
-
-export interface learningNodeInterface {          
-    id: String,
-    learningNodeName: String,
-    learningNodeDescription: String,
-    curriculums: briefCurriculumInterface[]
-    subNode: nodeInterface[],
-    nextLearningNodeId: briefLearningNodeInterface[],
-    previousLearningNodeId: briefLearningNodeInterface[],
-}
-
-export interface nodeInterface {
-    id: String,
-    priority: String,
-    size: Number,
-    resources: String
+export interface node{
+    id: string
+    type: string
+    data: string
+    createBy: string
+    updateAt: string
 }

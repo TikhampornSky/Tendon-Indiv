@@ -1,15 +1,15 @@
 import './App.css';
 import React from 'react';
 //import logo from './logo.svg';
-import ShowInverse from './pages/inverse-Show'
-import ShowDataHandle from './pages/ShowDataView'
-import PostDataHandle from './pages/PostDataView'
+import ShowInverse from './pages_mock/inverse-Show'
+import ShowDataHandle from './pages_mock/ShowDataView'
+import PostDataHandle from './pages_mock/PostDataView'
 // import DataPost from './pages/SendData_post'
 // import DataUpdateCall from './pages/SendData_update'
-import UpdateDataHandle from './pages/UpdatedataView'
-import DeleteDataHandle from './pages/DeleteDataView'
+import UpdateDataHandle from './pages_mock/UpdatedataView'
+import DeleteDataHandle from './pages_mock/DeleteDataView'
 // import DataDeleteCall from './pages/SendData_delete'
-import { ContainerProvider} from './services/NewContainer'
+import { ContainerProvider} from './services_mock/NewContainer'
 
 function App() {
   return (

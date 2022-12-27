@@ -3,27 +3,20 @@
 import React from "react"
 import Post from "../interfaces/Post";
 import { observer } from "mobx-react"
-import { useContext, useState, useEffect } from "react";
-import { containerContext } from '../services/Container'
+import { useState, useEffect } from "react";
 import ShowDataViewModel from './ShowDataViewModel'
 
-import { useContainer } from "../services/NewContainer";
+import { useContainer } from "../services_mock/NewContainer";
 
 
 const ShowDataHandle = observer(() => {              //observer converts React components into derivations of the data they render                
     //ส่งไปหา dataViewModel
     const [postsView, setPostsView] = useState<Post[]>([{id: 0, userId: 0, title: '', body: ''}])  
-    const getContext = useContext(containerContext.getService)
     const viewModel = new ShowDataViewModel(useContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.getPostsDataShow()
             myResolve(tmpValue)
-            // const tmp = async () =>  {
-            //     const tmpValue =  await postContext.getPosts()
-            //     setPosts(tmpValue)
-            // }
-            // tmp()
         }, [])
     }).then(() => {
         setPostsView(viewModel.getViewPosts())
@@ -33,14 +26,6 @@ const ShowDataHandle = observer(() => {              //observer converts React c
 
     return (
         <div>
-            {/* <p> My data is.. render </p> */}
-            {/* {postsView.map((postData: Post) => (
-                <div key= {postData.id}>
-                    <p>{postData.id} { '-->' } {postData.title}</p>
-                    <li> {postData.body} </li>
-                <hr></hr>
-            </div>
-            ))} */}
             <ShowDataView viewModel={postsView}/>
         </div>              
     )

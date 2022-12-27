@@ -1,7 +1,7 @@
 // import {useEffect, useState} from "react";
 import Post from "../interfaces/Post";
 import { makeAutoObservable } from "mobx"
-import GetService from "../services/GetService";
+import GetService from "../services_mock/GetService";
 
 import { Container } from "inversify";
 import TYPES from '../interfaces/inverse-Type'

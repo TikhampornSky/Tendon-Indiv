@@ -3,15 +3,13 @@
 import React from "react"
 import Post from "../interfaces/Post";
 import { observer } from "mobx-react"
-import { useContext, useState, useEffect } from "react";
-import { containerContext } from '../services/Container'
+import { useState, useEffect } from "react";
 import PostDataViewModel from './PostDataViewModel'
 
-import { useContainer } from "../services/NewContainer";
+import { useContainer } from "../services_mock/NewContainer";
 
 const PostDataHandle = observer(() => {       //ส่งไปหา dataViewModel
     const [postStatus, setpostStatus] = useState<Number>(0)  
-    const postContext = useContext(containerContext.postService)
     const dataOUT = GetDataSendOut()
     const viewModel = new PostDataViewModel( useContainer(), dataOUT)
     new Promise(function(myResolve, myReject) {

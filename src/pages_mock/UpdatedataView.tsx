@@ -3,11 +3,10 @@
 import React from "react"
 import Post from "../interfaces/Post";
 import { observer } from "mobx-react"
-import { useContext, useState, useEffect } from "react";
-import { containerContext } from '../services/Container'
+import { useState, useEffect } from "react";
 import UpdateDataViewModel from './UpdateDataViewModel'
 
-import { useContainer } from "../services/NewContainer";
+import { useContainer } from "../services_mock/NewContainer";
 
 
 const UpdateDataHandle = observer(() => {       //ส่งไปหา dataViewModel

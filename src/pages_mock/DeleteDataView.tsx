@@ -2,11 +2,10 @@
 // import { postServiceContext } from '../services/Container'
 import React from "react"
 import { observer } from "mobx-react"
-import { useContext, useState, useEffect } from "react";
-import { containerContext } from '../services/Container'
+import { useState, useEffect } from "react";
 import DeleteDataViewModel from './DeleteDataViewModel'
 
-import { useContainer } from "../services/NewContainer";
+import { useContainer } from "../services_mock/NewContainer";
 
 const DeleteDataHandle = observer(() => {       //ส่งไปหา dataViewModel
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
