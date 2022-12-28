@@ -43,7 +43,8 @@ export interface Node{
 
 let TYPES = {
     AuthService: Symbol("AuthService"),
-    SignService: Symbol("SignService")
+    SignService: Symbol("SignService"),
+    NodeService: Symbol("NodeService")
 };
 
 export default TYPES

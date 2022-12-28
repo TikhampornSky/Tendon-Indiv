@@ -128,7 +128,7 @@ export const SignOutHandle = observer(() => {
     } else {
         return (
             <div>
-                <p> "Sign-Out ERROR ZONE: " </p>
+                <p> "Sign-Out ERROR ZONE: (Doesn't Finish) " </p>
                 <p> { message } </p>
             </div>              
         )
