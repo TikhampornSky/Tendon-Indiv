@@ -43,6 +43,17 @@ class SignShowDataViewModel{
         return {} as User
     }
 
+    async signOut(token: string) {
+        const tmpValue =  await this.SignService.signOut(token)
+        this.status = this.SignService.getStatus()
+        if (this.status === 200) {
+            this.status = tmpValue
+        } else {
+            this.handleErrorStatus()
+        }
+        return this.status
+    }
+
     public getUser() {
         return this.user
     }

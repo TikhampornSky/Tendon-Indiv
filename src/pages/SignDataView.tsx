@@ -102,13 +102,45 @@ export const SignInHandle = observer(() => {
     }
 })
 
+export const SignOutHandle = observer(() => {
+
+    const [message, setMessage] = useState<String>("")
+    const [status, setStatus] = useState<Number>(0)   
+    const viewModel = new SignShowDataViewModel(useTendonContainer())
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZW5kb25CYWNrZW5kIiwic3ViIjoiNjNhYjE1ZmNlNjgwODE0MjJkNjJlZDMwIiwiZXhwIjoxNjcyMjM1NDY5LCJuYmYiOjE2NzIyMjgyNjksImlhdCI6MTY3MjIyODI2OSwianRpIjoiNjNhYzJkYWRlNjgwODE0MjJkNjJlZTE5In0.vcZKFdx3vx3CWAwJdJrDXguDfaWtpW1f_nO2CkK1TvE"
+    new Promise(function(myResolve, myReject) {
+        useEffect(() => {
+            const tmpValue = viewModel.signOut(token)
+            myResolve(tmpValue)
+        }, [])
+    }).then(() => {
+        setMessage(viewModel.getMessage())
+        setStatus(viewModel.getStatus())
+    })
+
+    if (status === 200) {
+        return (
+            <div>
+                <p> [ Sign-Out ] </p>
+                <p> Sign Out Completely!! </p>
+            </div>              
+        )
+    } else {
+        return (
+            <div>
+                <p> "Sign-Out ERROR ZONE: " </p>
+                <p> { message } </p>
+            </div>              
+        )
+    }
+})
+
 interface ShowDataViewProps {
     viewModel: User
 }
 
 const DataView = observer(( {viewModel}: ShowDataViewProps) => {
     user_id_new = viewModel.id
-    console.log(user_id_new)
     return (
         <div>
                 <div key= {viewModel.id}>
