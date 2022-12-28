@@ -7,6 +7,7 @@ export interface User {
     role: string
     createAt: string
     updateAt: string
+    password: string
 }
 
 export interface Course {

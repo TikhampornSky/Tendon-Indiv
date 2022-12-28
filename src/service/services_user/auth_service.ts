@@ -11,6 +11,7 @@ class AuthService {
     email:string
     updateAt:string
     response: User
+    status: number
 
     constructor() {
         makeAutoObservable(this)
@@ -19,7 +20,8 @@ class AuthService {
         this.lastName = ""
         this.email = ""
         this.updateAt = ""
-        this.response = {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: ''}
+        this.response = {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''}
+        this.status = 0
     }
 
 
@@ -28,9 +30,40 @@ class AuthService {
             headers: { Authorization: `Bearer ${token}` }
         };
 
-        const tmp_response =  await axios.get<User>('http://24.199.72.217:8080/api/v1/auth/users/'+id, config)
-        this.response = tmp_response.data
+        let tmp_response: any
+        try { 
+            tmp_response =  await axios.get<any>(`http://24.199.72.217:8080/api/v1/auth/users/${id}`, config)
+            this.status = tmp_response.status
+            this.response = tmp_response.data
+        } catch (err) {
+            // console.log("==> ", Object(err)["message"])
+            // console.log(err)
+            // console.log(typeof(err))
+            // console.log("--> ", Object(err)["response"]["request"]["status"])       //get status code
+            this.status = Object(err)["response"]["request"]["status"]
+
+            console.log("==> ", this.status)
+            this.response = {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''}
+        }
         return this.response
+    }
+
+    async updateUser(id: string, body: User) {
+        await axios.put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+            firstName: body.firstName,
+            lastName: body.lastName,
+            email: body.email,
+            password: body.password
+        })
+        .then((res) => {
+            this.status = res.status
+            this.response = res.data
+        })
+        return this.response
+    }
+
+    public getStatus() {
+        return this.status
     }
 }
 
