@@ -48,6 +48,17 @@ class AuthShowDataViewModel{
         return {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''}
     }
 
+    async deleteUserInformation(id: string, token: string) {
+        const status =  await this.AuthService.deleteUser(id, token)
+        this.status = status
+        if (this.status === 200) {
+            return this.status 
+        } else {
+            this.handleErrorStatus()
+            return this.status
+        }
+    }
+
     public getUser() {
         return this.user
     }
@@ -67,6 +78,8 @@ class AuthShowDataViewModel{
             this.message = "Unauthorized"
         } else if (this.status === 404) {
             this.message = "Doesn't have this ID"
+        } else if (this.status === 406) {
+            this.message = "wrong email or password"
         } else if (this.status === 409) {
             this.message = "Expired Token"
         } else {

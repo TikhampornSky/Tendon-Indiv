@@ -66,6 +66,22 @@ class AuthService {
         return this.response
     }
 
+    async deleteUser(id: string, token: string) {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        try {
+            await axios.delete(`http://24.199.72.217:8080/api/v1/auth/users/${id}`, config)
+            .then((res) => {
+                this.status = res.status
+            })
+        } catch(err) {
+            this.status = Object(err)["response"]["request"]["status"]
+        }
+        return this.status
+    }
+
     public getStatus() {
         return this.status
     }
