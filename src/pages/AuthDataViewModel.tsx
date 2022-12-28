@@ -25,21 +25,25 @@ class AuthShowDataViewModel{
     }
     
     async getUserInformation(id: string, token: string) {
-        const tmpPost =  await this.AuthService.getUserByID(id, token)
+        const tmpValue =  await this.AuthService.getUserByID(id, token)
         this.status = this.AuthService.getStatus()
-        console.log("Model: ", this.status)
         if (this.status === 200) {
-            this.user = tmpPost
+            this.user = tmpValue
             return this.user
-        } else if (this.status === 401) {
-            this.message = "Unauthorized"
-        } else if (this.status === 404) {
-            console.log("ppp")
-            this.message = "Doesn't have this ID"
-        } else if (this.status === 409) {
-            this.message = "Expired Token"
         } else {
-            this.message = "Internal Error"
+            this.handleErrorStatus()
+        }
+        return {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''}
+    }
+
+    async updateUserInformation(id: string, token: string, body: User) {
+        const tmpValue = await this.AuthService.updateUser(id, token, body)
+        this.status = this.AuthService.getStatus()
+        if (this.status === 200) {
+            this.user = tmpValue
+            return this.user
+        } else {
+            this.handleErrorStatus()
         }
         return {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''}
     }
@@ -54,6 +58,20 @@ class AuthShowDataViewModel{
 
     public getMessage() {
         return this.message
+    }
+
+    private handleErrorStatus() {
+        if (this.status === 400) {
+            this.message = "some field not exit"
+        } else if (this.status === 401) {
+            this.message = "Unauthorized"
+        } else if (this.status === 404) {
+            this.message = "Doesn't have this ID"
+        } else if (this.status === 409) {
+            this.message = "Expired Token"
+        } else {
+            this.message = "Internal Error"
+        }
     }
 
 }
