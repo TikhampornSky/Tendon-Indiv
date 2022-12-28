@@ -6,9 +6,7 @@ import AuthShowDataViewModel from './AuthDataViewModel'
 import { useTendonContainer } from "../service/container";
 import { User } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
-
-const user_id = "63ab15fce68081422d62ed30"      //63ab15fce68081422d62ed30
-var user_id_tmp:string = "63ac2003e68081422d62ed8a"
+import { user_id, user_id_delete } from "../_demo_setting";
 
 export const AuthGetHandle = observer(() => {              
 
@@ -94,7 +92,7 @@ export const AuthDeleteHandle = observer(() => {
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
-            const tmpValue = viewModel.deleteUserInformation(user_id_tmp, token)
+            const tmpValue = viewModel.deleteUserInformation(user_id_delete, token)
             myResolve(tmpValue)
         }, [])
     }).then(() => {

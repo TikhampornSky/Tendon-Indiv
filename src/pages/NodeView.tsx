@@ -6,8 +6,7 @@ import { useTendonContainer } from "../service/container";
 import NodeShowDataViewModel from "./NodeViewModel";
 import { Node } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
-
-export var user_id_new: string;         // For Testing purpose
+import { node_id, node_id_delete } from "../_demo_setting";
 
 export const NodeCreateHandle = observer(() => {
 
@@ -38,7 +37,7 @@ export const NodeCreateHandle = observer(() => {
         return (
             <div>
                 <p> [ Node POST ] </p>
-                <DataView viewModel={ nodeView } />
+                <NodeView viewModel={ nodeView } />
             </div>              
         )
     } else {
@@ -51,12 +50,115 @@ export const NodeCreateHandle = observer(() => {
     }
 })
 
+export const NodeGetHandle = observer(() => {              
+
+    const [nodeView, setNodeView] = useState<Node>({} as Node)  
+    const [message, setMessage] = useState<String>("")
+    const viewModel = new NodeShowDataViewModel(useTendonContainer())
+    new Promise(function(myResolve, myReject) {
+        useEffect(() => {
+            const tmpValue = viewModel.getNodeData(node_id, token)
+            myResolve(tmpValue)
+        }, [])
+    }).then(() => {
+        setNodeView(viewModel.getNode())
+        setMessage(viewModel.getMessage())
+    })
+
+    if (nodeView.id === undefined) {
+        return (
+            <div>
+                <p>  "NODE GET ERROR ZONE: " </p>
+                <p> { message } </p>
+            </div>              
+        )
+    }
+
+    return (
+        <div>
+                <p> [ Node GET ] </p>
+                <NodeView viewModel={ nodeView } />
+        </div>              
+    )
+})
+
+export const NodeUpdateHandle = observer(() => {              
+
+    const [nodeView, setNodeView] = useState<Node>({} as Node)  
+    const [message, setMessage] = useState<String>("")
+    var body: Node = {
+        id: '',
+        type: 'tttttttt2',
+        data: 'dddddddd',
+        createBy: '',
+        updateAt: '',
+    }
+    const viewModel = new NodeShowDataViewModel(useTendonContainer())
+    new Promise(function(myResolve, myReject) {
+        useEffect(() => {
+            const tmpValue = viewModel.updateNodeData(node_id, token, body)
+            myResolve(tmpValue)
+        }, [])
+    }).then(() => {
+        setNodeView(viewModel.getNode())
+        setMessage(viewModel.getMessage())
+    })
+
+    if (nodeView.id === undefined) {
+        return (
+            <div>
+                <p> "NODE UPDATE ERROR ZONE: " </p>
+                <p> { message } </p>
+            </div>              
+        )
+    }
+
+    return (
+        <div>
+            <p> [ Node UPDATE ] </p>
+            <NodeView viewModel={nodeView}/>
+        </div>              
+    )
+})
+
+export const NodeDeleteHandle = observer(() => { 
+
+    const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
+    const [message, setMessage] = useState<String>("")
+    const viewModel = new NodeShowDataViewModel(useTendonContainer())
+
+    new Promise(function(myResolve, myReject) {
+        useEffect(() => {
+            const tmpValue = viewModel.deleteNode(node_id_delete, token)
+            myResolve(tmpValue)
+        }, [])
+    }).then(() => {
+        setDeleteStatus(viewModel.getStatus())
+        setMessage(viewModel.getMessage())
+    })
+
+    if (deleteStatus === 200) {
+        return (
+            <div>
+                <p> [ Node DELETE ] </p>
+                <p> Delete Complete </p>
+            </div>              
+        )
+    } else {
+        return (
+            <div>
+                <p> "NODE DELETE ERROR ZONE: " </p>
+                <p> { message } </p>
+            </div>              
+        )
+    }
+})
+
 interface ShowDataViewProps {
     viewModel: Node
 }
 
-const DataView = observer(( {viewModel}: ShowDataViewProps) => {
-    user_id_new = viewModel.id
+const NodeView = observer(( {viewModel}: ShowDataViewProps) => {
     return (
         <div>
                 <div key= {viewModel.id}>

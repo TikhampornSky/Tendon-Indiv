@@ -36,6 +36,60 @@ class NodeService {
         return this.response
     }
 
+    async getNodeById(id: string, token: string){
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        let tmp_response: any
+        try { 
+            tmp_response =  await axios.get<any>(`http://24.199.72.217:8080/api/v1/auth/nodes/${id}`, config)
+            this.status = tmp_response.status
+            this.response = tmp_response.data
+        } catch (err) {
+            this.status = Object(err)["response"]["request"]["status"]
+            this.response = {} as Node
+        }
+        return this.response
+    }
+
+    async updateNode(id: string, token: string, body: Node) {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        try { 
+            await axios.patch(`http://24.199.72.217:8080/api/v1/auth/nodes/${id}`, {
+                type: body.type,
+                data: body.data
+            }, config)
+            .then((res) => {
+                this.status = res.status
+                this.response = res.data
+            })
+        } catch (err) {
+            this.status = Object(err)["response"]["request"]["status"]
+            this.response = {} as Node
+        }
+        return this.response
+    }
+
+    async deleteNode(id: string, token: string) {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+
+        try {
+            await axios.delete(`http://24.199.72.217:8080/api/v1/auth/nodes/${id}`, config)
+            .then((res) => {
+                this.status = res.status
+            })
+        } catch(err) {
+            this.status = Object(err)["response"]["request"]["status"]
+        }
+        return this.status
+    }
+
     public getStatus() {
         return this.status
     }

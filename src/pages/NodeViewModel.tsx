@@ -31,7 +31,40 @@ class NodeShowDataViewModel{
         return {} as Node
     }
 
-    
+    async getNodeData(id: string, token: string) {
+        const tmpValue =  await this.NodeService.getNodeById(id, token)
+        this.status = this.NodeService.getStatus()
+        if (this.status === 200) {
+            this.node = tmpValue
+            return this.node
+        } else {
+            this.handleErrorStatus()
+        }
+        return {} as Node
+    }
+
+    async updateNodeData(id: string, token: string, body: Node) {
+        const tmpValue =  await this.NodeService.updateNode(id, token, body)
+        this.status = this.NodeService.getStatus()
+        if (this.status === 200) {
+            this.node = tmpValue
+            return this.node
+        } else {
+            this.handleErrorStatus()
+        }
+        return {} as Node
+    }
+
+    async deleteNode(id: string, token: string) {
+        const status =  await this.NodeService.deleteNode(id, token)
+        this.status = status
+        if (this.status === 200) {
+            return this.status 
+        } else {
+            this.handleErrorStatus()
+            return this.status
+        }
+    }
 
     public getNode() {
         return this.node
@@ -53,9 +86,9 @@ class NodeShowDataViewModel{
         } else if (this.status === 404) {
             this.message = "Doesn't have this ID"
         } else if (this.status === 406) {
-            this.message = "wrong email or password"
+            this.message = "406"
         } else if (this.status === 409) {
-            this.message = "email already exists"
+            this.message = "Token for Authorized Expired"
         } else {
             this.message = "Internal Error"
         }
