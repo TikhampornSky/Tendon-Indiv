@@ -31,6 +31,18 @@ class SignShowDataViewModel{
         return {} as User
     }
 
+    async signIn(body: User) {
+        const tmpValue =  await this.SignService.signIn(body)
+        this.status = this.SignService.getStatus()
+        if (this.status === 200) {
+            this.user = tmpValue
+            return this.user
+        } else {
+            this.handleErrorStatus()
+        }
+        return {} as User
+    }
+
     public getUser() {
         return this.user
     }

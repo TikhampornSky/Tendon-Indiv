@@ -6,9 +6,9 @@ import AuthShowDataViewModel from './AuthDataViewModel'
 import { useTendonContainer } from "../service/container";
 import { User } from "../interfaces/TendonType";
 
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZW5kb25CYWNrZW5kIiwic3ViIjoiNjNhNmZhZDZlNjgwODE0MjJkNjJlZDI0IiwiZXhwIjoxNjcyMjI1Mzg4LCJuYmYiOjE2NzIyMTgxODgsImlhdCI6MTY3MjIxODE4OCwianRpIjoiNjNhYzA2NGNlNjgwODE0MjJkNjJlZDQxIn0.zda__305SJAidt8_skoCI5damJ9kfXjD2FQUaN1H1Xc"
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZW5kb25CYWNrZW5kIiwic3ViIjoiNjNhNmZhZDZlNjgwODE0MjJkNjJlZDI0IiwiZXhwIjoxNjcyMjM0MzY5LCJuYmYiOjE2NzIyMjcxNjksImlhdCI6MTY3MjIyNzE2OSwianRpIjoiNjNhYzI5NjFlNjgwODE0MjJkNjJlZDhmIn0.2Ecsv0bAOcfgYuupoGCPzgqvsuDX1grdcksed7rFf2I"
 const user_id = "63ab15fce68081422d62ed30"      //63ab15fce68081422d62ed30
-var user_id_tmp:string = "63ac1c7fe68081422d62ed69"
+var user_id_tmp:string = "63ac2003e68081422d62ed8a"
 
 export const AuthGetHandle = observer(() => {              
 

@@ -11,7 +11,7 @@ import DeleteDataHandle from './pages_mock/DeleteDataView'
 import { ContainerProvider} from './services_mock/NewContainer'
 
 import { AuthGetHandle, AuthUpdateHandle, AuthDeleteHandle } from './pages/AuthDataView';
-import { SignUpHandle } from './pages/SignDataView';
+import { SignUpHandle, SignInHandle } from './pages/SignDataView';
 import { ContainerProviderTendon } from './service/container';
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
         < AuthUpdateHandle />
         < AuthDeleteHandle />
         < SignUpHandle />
+        <SignInHandle />
       </ContainerProviderTendon>
 
       <ContainerProvider>
