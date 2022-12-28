@@ -5,22 +5,12 @@ import { User } from '../../interfaces/TendonType'
 
 @injectable()
 class AuthService {
-    id:string
-    firstName:string
-    lastName:string
-    email:string
-    updateAt:string
     response: User
     status: number
 
     constructor() {
         makeAutoObservable(this)
-        this.id = ""
-        this.firstName = ""
-        this.lastName = ""
-        this.email = ""
-        this.updateAt = ""
-        this.response = {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''}
+        this.response = {} as User
         this.status = 0
     }
 
@@ -37,7 +27,7 @@ class AuthService {
             this.response = tmp_response.data
         } catch (err) {
             this.status = Object(err)["response"]["request"]["status"]
-            this.response = {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''}
+            this.response = {} as User
         }
         return this.response
     }
@@ -61,7 +51,7 @@ class AuthService {
         } catch (err) {
             this.status = Object(err)["response"]["request"]["status"]
             // console.log(this.status)
-            this.response = {type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''}
+            this.response = {} as User
         }
         return this.response
     }

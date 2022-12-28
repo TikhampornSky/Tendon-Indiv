@@ -1,4 +1,5 @@
 //import {useState} from 'react'
+import axios from "axios";
 import { injectable } from "inversify";
 import { makeAutoObservable } from "mobx"
 import Post from "../interfaces/Post";
@@ -13,23 +14,15 @@ class PostService {
     }
 
     async addPost(postNew: Post) {
-        await fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            body: JSON.stringify({
+        await axios.post('https://jsonplaceholder.typicode.com/posts',
+            {
                 title: postNew.title,
                 body: postNew.body,
                 userId: postNew.userId,
                 id: postNew.id
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        })
+            })
         .then((response) => {
-            if (response.ok) {
-                // console.log("Status is ", response.status)
-                this.postStatus = response.status
-            }
+            this.postStatus = response.status
         })
         .catch((err) => {
             // console.log(err.message)

@@ -4,14 +4,14 @@ import React from 'react';
 import ShowInverse from './pages_mock/inverse-Show'
 import ShowDataHandle from './pages_mock/ShowDataView'
 import PostDataHandle from './pages_mock/PostDataView'
-// import DataPost from './pages/SendData_post'
-// import DataUpdateCall from './pages/SendData_update'
+
 import UpdateDataHandle from './pages_mock/UpdatedataView'
 import DeleteDataHandle from './pages_mock/DeleteDataView'
-// import DataDeleteCall from './pages/SendData_delete'
+
 import { ContainerProvider} from './services_mock/NewContainer'
 
 import { AuthGetHandle, AuthUpdateHandle, AuthDeleteHandle } from './pages/AuthDataView';
+import { SignUpHandle } from './pages/SignDataView';
 import { ContainerProviderTendon } from './service/container';
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
         < AuthGetHandle />
         < AuthUpdateHandle />
         < AuthDeleteHandle />
+        < SignUpHandle />
       </ContainerProviderTendon>
 
       <ContainerProvider>

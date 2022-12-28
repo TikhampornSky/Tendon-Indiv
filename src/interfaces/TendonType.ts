@@ -8,6 +8,7 @@ export interface User {
     createAt: string
     updateAt: string
     password: string
+    accessToken: string
 }
 
 export interface Course {
@@ -42,6 +43,7 @@ export interface Node{
 
 let TYPES = {
     AuthService: Symbol("AuthService"),
+    SignService: Symbol("SignService")
 };
 
 export default TYPES

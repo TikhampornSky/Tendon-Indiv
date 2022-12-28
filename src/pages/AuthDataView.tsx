@@ -8,11 +8,11 @@ import { User } from "../interfaces/TendonType";
 
 const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZW5kb25CYWNrZW5kIiwic3ViIjoiNjNhNmZhZDZlNjgwODE0MjJkNjJlZDI0IiwiZXhwIjoxNjcyMjI1Mzg4LCJuYmYiOjE2NzIyMTgxODgsImlhdCI6MTY3MjIxODE4OCwianRpIjoiNjNhYzA2NGNlNjgwODE0MjJkNjJlZDQxIn0.zda__305SJAidt8_skoCI5damJ9kfXjD2FQUaN1H1Xc"
 const user_id = "63ab15fce68081422d62ed30"      //63ab15fce68081422d62ed30
-const user_id_tmp = "63ac0de8e68081422d62ed51"
+var user_id_tmp:string = "63ac1c7fe68081422d62ed69"
 
 export const AuthGetHandle = observer(() => {              
 
-    const [userGetView, setUserGetView] = useState<User>({type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''})  
+    const [userGetView, setUserGetView] = useState<User>({} as User)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new AuthShowDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
@@ -44,7 +44,7 @@ export const AuthGetHandle = observer(() => {
 
 export const AuthUpdateHandle = observer(() => {              
 
-    const [userView, setUserView] = useState<User>({type: '', id:'', firstName: '', lastName: '', email: '', role: '', createAt: '', updateAt: '', password: ''})  
+    const [userView, setUserView] = useState<User>({} as User)  
     const [message, setMessage] = useState<String>("")
     var body: User = {
         firstName: "Tontan",
@@ -55,7 +55,8 @@ export const AuthUpdateHandle = observer(() => {
         createAt: "",
         updateAt: "",
         type: "",
-        role: ""
+        role: "",
+        accessToken: ''
     }
     const viewModel = new AuthShowDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {

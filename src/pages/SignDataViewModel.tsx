@@ -3,55 +3,32 @@ import { makeAutoObservable } from "mobx"
 
 import { Container } from "inversify";
 import TYPES, { User } from '../interfaces/TendonType'
-import AuthService from "../service/services_user/auth_service";
+import SignService from "../service/services_user/sign_service";
 
-class AuthShowDataViewModel{
-    private AuthService: AuthService 
+class SignShowDataViewModel{
+    private SignService: SignService 
     private user: User
     private status: Number
     private message: string
 
     constructor(container: Container) {
         makeAutoObservable(this)
-        this.AuthService = container.get<AuthService>(TYPES.AuthService)
+        this.SignService = container.get<SignService>(TYPES.SignService)
         this.user = {} as User
         this.status = 0
         this.message = ''
     }
     
-    async getUserInformation(id: string, token: string) {
-        const tmpValue =  await this.AuthService.getUserByID(id, token)
-        this.status = this.AuthService.getStatus()
-        if (this.status === 200) {
+    async signUp(body: User) {
+        const tmpValue =  await this.SignService.signUp(body)
+        this.status = this.SignService.getStatus()
+        if (this.status === 201) {
             this.user = tmpValue
             return this.user
         } else {
             this.handleErrorStatus()
         }
         return {} as User
-    }
-
-    async updateUserInformation(id: string, token: string, body: User) {
-        const tmpValue = await this.AuthService.updateUser(id, token, body)
-        this.status = this.AuthService.getStatus()
-        if (this.status === 200) {
-            this.user = tmpValue
-            return this.user
-        } else {
-            this.handleErrorStatus()
-        }
-        return {} as User
-    }
-
-    async deleteUserInformation(id: string, token: string) {
-        const status =  await this.AuthService.deleteUser(id, token)
-        this.status = status
-        if (this.status === 200) {
-            return this.status 
-        } else {
-            this.handleErrorStatus()
-            return this.status
-        }
     }
 
     public getUser() {
@@ -76,7 +53,7 @@ class AuthShowDataViewModel{
         } else if (this.status === 406) {
             this.message = "wrong email or password"
         } else if (this.status === 409) {
-            this.message = "Expired Token"
+            this.message = "email already exists"
         } else {
             this.message = "Internal Error"
         }
@@ -84,4 +61,4 @@ class AuthShowDataViewModel{
 
 }
 
-export default AuthShowDataViewModel
+export default SignShowDataViewModel
