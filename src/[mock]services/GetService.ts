@@ -1,6 +1,6 @@
 //import {useState, useEffect, createContext} from "react"
 import axios from 'axios'
-import Post from '../interfaces/Post'
+import Post from '../[mock]Interface/Post'
 import { makeAutoObservable } from "mobx"
 import { injectable } from 'inversify'
 

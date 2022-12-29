@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx"
 import axios from 'axios'
-import Post from '../interfaces/Post'
+import Post from '../[mock]Interface/Post'
 import { injectable } from "inversify"
 
 @injectable()

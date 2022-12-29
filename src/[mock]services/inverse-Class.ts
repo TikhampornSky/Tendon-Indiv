@@ -1,8 +1,8 @@
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
-import TYPES from '../interfaces/inverse-Type';
-import Warrior from '../interfaces/inverse-Warrior';
-import Weapon from '../interfaces/inverse-Weapon';
+import TYPES from "../[mock]Interface/inverse-Type";
+import Warrior from "../[mock]Interface/inverse-Warrior";
+import Weapon from "../[mock]Interface/inverse-Weapon";
 import ThrowableWeapon from '../[mock]Interface/inverse-ThrowableWeapon'
 
 @injectable()

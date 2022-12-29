@@ -1,8 +1,8 @@
 import { Container } from "inversify";
-import TYPES from "../interfaces/inverse-Type";
+import TYPES from "../[mock]Interface/inverse-Type";
 import { Ninja, Katana, Shuriken } from "./inverse-Class";
-import Warrior from '../interfaces/inverse-Warrior';
-import Weapon from '../interfaces/inverse-Weapon';
+import Warrior from "../[mock]Interface/inverse-Warrior";
+import Weapon from "../[mock]Interface/inverse-Weapon";
 import ThrowableWeapon from '../[mock]Interface/inverse-ThrowableWeapon'
 
 import GetService from "./GetService";

@@ -2,7 +2,7 @@
 import axios from "axios";
 import { injectable } from "inversify";
 import { makeAutoObservable } from "mobx"
-import Post from "../interfaces/Post";
+import Post from "../[mock]Interface/Post";
 
 @injectable()
 class PostService {
