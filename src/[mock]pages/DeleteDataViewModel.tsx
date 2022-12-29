@@ -1,8 +1,8 @@
 import { makeAutoObservable } from "mobx"
-import DeleteService from "../services_mock/DeleteService";
+import DeleteService from "../[mock]services/DeleteService";
 
 import { Container } from "inversify";
-import TYPES from '../interfaces/inverse-Type'
+import TYPES from "../[mock]Interface/inverse-Type";
 
 class DeleteDataViewModel {     
     private deleteService: DeleteService 

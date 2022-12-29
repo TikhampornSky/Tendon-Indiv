@@ -1,12 +1,12 @@
 // import {useContext, useEffect, useState} from "react";
 // import { postServiceContext } from '../services/Container'
 import React from "react"
-import Post from "../interfaces/Post";
+import Post from "../[mock]Interface/Post";
 import { observer } from "mobx-react"
 import { useState, useEffect } from "react";
 import ShowDataViewModel from './ShowDataViewModel'
 
-import { useContainer } from "../services_mock/NewContainer";
+import { useContainer } from "../[mock]services/NewContainer";
 
 
 const ShowDataHandle = observer(() => {              //observer converts React components into derivations of the data they render                

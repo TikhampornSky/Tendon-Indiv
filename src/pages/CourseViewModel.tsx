@@ -5,7 +5,7 @@ import { Container } from "inversify";
 import TYPES, { Course } from '../interfaces/TendonType'
 import CourseService from "../services/course_services";
 
-class CourseShowDataViewModel{
+class CourseDataViewModel{
     private CourseService: CourseService 
     private Course: Course
     private status: Number
@@ -96,4 +96,4 @@ class CourseShowDataViewModel{
 
 }
 
-export default CourseShowDataViewModel
+export default CourseDataViewModel

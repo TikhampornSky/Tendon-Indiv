@@ -5,7 +5,7 @@ import { Container } from "inversify";
 import TYPES, { User } from '../interfaces/TendonType'
 import AuthService from "../services/user_service";
 
-class AuthShowDataViewModel{
+class UserDataViewModel{
     private AuthService: AuthService 
     private user: User
     private status: Number
@@ -84,4 +84,4 @@ class AuthShowDataViewModel{
 
 }
 
-export default AuthShowDataViewModel
+export default UserDataViewModel

@@ -5,7 +5,7 @@ import { Container } from "inversify";
 import TYPES, { Lesson } from '../interfaces/TendonType'
 import LessonService from "../services/lesson_services";
 
-class LessonShowDataViewModel{
+class LessonDataViewModel{
     private LessonService: LessonService 
     private lesson: Lesson
     private status: Number
@@ -96,4 +96,4 @@ class LessonShowDataViewModel{
 
 }
 
-export default LessonShowDataViewModel
+export default LessonDataViewModel

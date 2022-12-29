@@ -1,9 +1,9 @@
-import Post from "../interfaces/Post";
+import Post from "../[mock]Interface/Post";
 import { makeAutoObservable } from "mobx"
-import UpdateService from "../services_mock/UpdateService";
+import UpdateService from "../[mock]services/UpdateService";
 
 import { Container } from "inversify";
-import TYPES from '../interfaces/inverse-Type'
+import TYPES from "../[mock]Interface/inverse-Type";
 
 class UpdateDataViewModel {     
     private updateService: UpdateService 

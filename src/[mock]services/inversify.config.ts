@@ -3,7 +3,7 @@ import TYPES from "../interfaces/inverse-Type";
 import { Ninja, Katana, Shuriken } from "./inverse-Class";
 import Warrior from '../interfaces/inverse-Warrior';
 import Weapon from '../interfaces/inverse-Weapon';
-import ThrowableWeapon from '../interfaces/inverse-ThrowableWeapon'
+import ThrowableWeapon from '../[mock]Interface/inverse-ThrowableWeapon'
 
 import GetService from "./GetService";
 import PostService from "./PostService";

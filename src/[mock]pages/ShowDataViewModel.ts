@@ -1,10 +1,9 @@
-// import {useEffect, useState} from "react";
-import Post from "../interfaces/Post";
+import Post from "../[mock]Interface/Post";
 import { makeAutoObservable } from "mobx"
-import GetService from "../services_mock/GetService";
+import GetService from "../[mock]services/GetService";
 
 import { Container } from "inversify";
-import TYPES from '../interfaces/inverse-Type'
+import TYPES from "../[mock]Interface/inverse-Type";
 
 export interface ShowDataIViewModel {
     getPostsDataShow: () => Post[]

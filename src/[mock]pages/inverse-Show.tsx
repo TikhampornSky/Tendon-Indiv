@@ -1,5 +1,5 @@
 import React from "react"
-import { textt } from "../services_mock/inverse-Resolve"
+import { textt } from "../[mock]services/inverse-Resolve"
 
 function ShowInverse() {
     return (

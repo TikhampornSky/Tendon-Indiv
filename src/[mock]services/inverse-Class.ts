@@ -3,7 +3,7 @@ import "reflect-metadata";
 import TYPES from '../interfaces/inverse-Type';
 import Warrior from '../interfaces/inverse-Warrior';
 import Weapon from '../interfaces/inverse-Weapon';
-import ThrowableWeapon from '../interfaces/inverse-ThrowableWeapon'
+import ThrowableWeapon from '../[mock]Interface/inverse-ThrowableWeapon'
 
 @injectable()
 class Katana implements Weapon {

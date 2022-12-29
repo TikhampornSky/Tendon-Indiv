@@ -3,7 +3,7 @@ import { observer } from "mobx-react"
 import { useState, useEffect } from "react";
 
 import { useTendonContainer } from "../services/container";
-import CourseShowDataViewModel from "./CourseViewModel";
+import CourseDataViewModel from "./CourseViewModel";
 import { Course } from "../interfaces/TendonType";
 import { token, course_id, course_id_delete } from "../_demo_setting";
 
@@ -21,7 +21,7 @@ export const CourseCreateHandle = observer(() => {
         updateAt: "",
         id: "",
     }
-    const viewModel = new CourseShowDataViewModel(useTendonContainer())
+    const viewModel = new CourseDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -55,7 +55,7 @@ export const CourseGetHandle = observer(() => {
 
     const [courseView, setCourseView] = useState<Course>({} as Course)  
     const [message, setMessage] = useState<String>("")
-    const viewModel = new CourseShowDataViewModel(useTendonContainer())
+    const viewModel = new CourseDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.getCourseData(course_id, token)
@@ -96,7 +96,7 @@ export const CourseUpdateHandle = observer(() => {
         updateAt: "",
         id: "",
     }
-    const viewModel = new CourseShowDataViewModel(useTendonContainer())
+    const viewModel = new CourseDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.updateCourseData(course_id, token, body)
@@ -128,7 +128,7 @@ export const CourseDeleteHandle = observer(() => {
 
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
     const [message, setMessage] = useState<String>("")
-    const viewModel = new CourseShowDataViewModel(useTendonContainer())
+    const viewModel = new CourseDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {

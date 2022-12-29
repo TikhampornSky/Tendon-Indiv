@@ -3,7 +3,7 @@ import { observer } from "mobx-react"
 import { useState, useEffect } from "react";
 
 import { useTendonContainer } from "../services/container";
-import NodeShowDataViewModel from "./NodeViewModel";
+import NodeDataViewModel from "./NodeViewModel";
 import { Node } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
 import { node_id, node_id_delete } from "../_demo_setting";
@@ -20,7 +20,7 @@ export const NodeCreateHandle = observer(() => {
         createBy: '',
         updateAt: '',
     }
-    const viewModel = new NodeShowDataViewModel(useTendonContainer())
+    const viewModel = new NodeDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -54,7 +54,7 @@ export const NodeGetHandle = observer(() => {
 
     const [nodeView, setNodeView] = useState<Node>({} as Node)  
     const [message, setMessage] = useState<String>("")
-    const viewModel = new NodeShowDataViewModel(useTendonContainer())
+    const viewModel = new NodeDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.getNodeData(node_id, token)
@@ -93,7 +93,7 @@ export const NodeUpdateHandle = observer(() => {
         createBy: '',
         updateAt: '',
     }
-    const viewModel = new NodeShowDataViewModel(useTendonContainer())
+    const viewModel = new NodeDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.updateNodeData(node_id, token, body)
@@ -125,7 +125,7 @@ export const NodeDeleteHandle = observer(() => {
 
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
     const [message, setMessage] = useState<String>("")
-    const viewModel = new NodeShowDataViewModel(useTendonContainer())
+    const viewModel = new NodeDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {

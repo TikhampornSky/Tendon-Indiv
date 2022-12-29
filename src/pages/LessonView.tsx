@@ -3,7 +3,7 @@ import { observer } from "mobx-react"
 import { useState, useEffect } from "react";
 
 import { useTendonContainer } from "../services/container";
-import LessonShowDataViewModel from "./LessonViewModel";
+import LessonDataViewModel from "./LessonViewModel";
 import { Lesson } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
 import { lesson_id, lesson_id_delete } from "../_demo_setting";
@@ -24,7 +24,7 @@ export const LessonCreateHandle = observer(() => {
         updateAt: "",
         id: "",
     }
-    const viewModel = new LessonShowDataViewModel(useTendonContainer())
+    const viewModel = new LessonDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -58,7 +58,7 @@ export const LessonGetHandle = observer(() => {
 
     const [lessonView, setLessonView] = useState<Lesson>({} as Lesson)  
     const [message, setMessage] = useState<String>("")
-    const viewModel = new LessonShowDataViewModel(useTendonContainer())
+    const viewModel = new LessonDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.getLessonData(lesson_id, token)
@@ -101,7 +101,7 @@ export const LessonUpdateHandle = observer(() => {
         updateAt: "",
         id: "",
     }
-    const viewModel = new LessonShowDataViewModel(useTendonContainer())
+    const viewModel = new LessonDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.updateLessonData(lesson_id, token, body)
@@ -133,7 +133,7 @@ export const LessonDeleteHandle = observer(() => {
 
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
     const [message, setMessage] = useState<String>("")
-    const viewModel = new LessonShowDataViewModel(useTendonContainer())
+    const viewModel = new LessonDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {

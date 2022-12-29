@@ -1,9 +1,9 @@
-import Post from "../interfaces/Post";
+import Post from "../[mock]Interface/Post";
 import { makeAutoObservable } from "mobx"
-import PostService from "../services_mock/PostService";
+import PostService from "../[mock]services/PostService";
 
 import { Container } from "inversify";
-import TYPES from '../interfaces/inverse-Type'
+import TYPES from "../[mock]Interface/inverse-Type";
 
 class PostDataViewModel{     
     private postService: PostService 

@@ -3,7 +3,7 @@ import { observer } from "mobx-react"
 import { useState, useEffect } from "react";
 
 import { useTendonContainer } from "../services/container";
-import SignShowDataViewModel from "./SignDataViewModel";
+import SignDataViewModel from "./SignViewModel";
 import { User } from "../interfaces/TendonType";
 
 export var user_id_new: string;         // For Testing purpose
@@ -25,7 +25,7 @@ export const SignUpHandle = observer(() => {
         role: "",
         accessToken: ''
     }
-    const viewModel = new SignShowDataViewModel(useTendonContainer())
+    const viewModel = new SignDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -72,7 +72,7 @@ export const SignInHandle = observer(() => {
         role: "",
         accessToken: ''
     }
-    const viewModel = new SignShowDataViewModel(useTendonContainer())
+    const viewModel = new SignDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -106,7 +106,7 @@ export const SignOutHandle = observer(() => {
 
     const [message, setMessage] = useState<String>("")
     const [status, setStatus] = useState<Number>(0)   
-    const viewModel = new SignShowDataViewModel(useTendonContainer())
+    const viewModel = new SignDataViewModel(useTendonContainer())
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ0ZW5kb25CYWNrZW5kIiwic3ViIjoiNjNhYjE1ZmNlNjgwODE0MjJkNjJlZDMwIiwiZXhwIjoxNjcyMjM1NDY5LCJuYmYiOjE2NzIyMjgyNjksImlhdCI6MTY3MjIyODI2OSwianRpIjoiNjNhYzJkYWRlNjgwODE0MjJkNjJlZTE5In0.vcZKFdx3vx3CWAwJdJrDXguDfaWtpW1f_nO2CkK1TvE"
     new Promise(function(myResolve, myReject) {
         useEffect(() => {

@@ -5,7 +5,7 @@ import { Container } from "inversify";
 import TYPES, { User } from '../interfaces/TendonType'
 import SignService from "../services/sign_service";
 
-class SignShowDataViewModel{
+class SignDataViewModel{
     private SignService: SignService 
     private user: User
     private status: Number
@@ -84,4 +84,4 @@ class SignShowDataViewModel{
 
 }
 
-export default SignShowDataViewModel
+export default SignDataViewModel

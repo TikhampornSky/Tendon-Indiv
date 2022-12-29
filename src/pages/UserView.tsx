@@ -1,18 +1,18 @@
 import React from "react"
 import { observer } from "mobx-react"
 import { useState, useEffect } from "react";
-import AuthShowDataViewModel from './AuthDataViewModel'
+import UserDataViewModel from './UserViewModel'
 
 import { useTendonContainer } from "../services/container";
 import { User } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
 import { user_id, user_id_delete } from "../_demo_setting";
 
-export const AuthGetHandle = observer(() => {              
+export const UserGetHandle = observer(() => {              
 
     const [userGetView, setUserGetView] = useState<User>({} as User)  
     const [message, setMessage] = useState<String>("")
-    const viewModel = new AuthShowDataViewModel(useTendonContainer())
+    const viewModel = new UserDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.getUserInformation(user_id, token)
@@ -40,7 +40,7 @@ export const AuthGetHandle = observer(() => {
     )
 })
 
-export const AuthUpdateHandle = observer(() => {              
+export const UserUpdateHandle = observer(() => {              
 
     const [userView, setUserView] = useState<User>({} as User)  
     const [message, setMessage] = useState<String>("")
@@ -56,7 +56,7 @@ export const AuthUpdateHandle = observer(() => {
         role: "",
         accessToken: ''
     }
-    const viewModel = new AuthShowDataViewModel(useTendonContainer())
+    const viewModel = new UserDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
             const tmpValue = viewModel.updateUserInformation(user_id, token, body)
@@ -84,11 +84,11 @@ export const AuthUpdateHandle = observer(() => {
     )
 })
 
-export const AuthDeleteHandle = observer(() => { 
+export const UserDeleteHandle = observer(() => { 
 
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
     const [message, setMessage] = useState<String>("")
-    const viewModel = new AuthShowDataViewModel(useTendonContainer())
+    const viewModel = new UserDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -100,7 +100,6 @@ export const AuthDeleteHandle = observer(() => {
         setMessage(viewModel.getMessage())
     })
 
-    // console.log("Delete Status: ", deleteStatus)
     if (deleteStatus === 200) {
         return (
             <div>

@@ -5,7 +5,7 @@ import { Container } from "inversify";
 import TYPES, { Node } from '../interfaces/TendonType'
 import NodeService from "../services/node_services";
 
-class NodeShowDataViewModel{
+class NodeDataViewModel{
     private NodeService: NodeService 
     private node: Node
     private status: Number
@@ -96,4 +96,4 @@ class NodeShowDataViewModel{
 
 }
 
-export default NodeShowDataViewModel
+export default NodeDataViewModel

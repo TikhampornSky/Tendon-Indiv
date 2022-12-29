@@ -1,17 +1,17 @@
 import './App.css';
 import React from 'react';
 //import logo from './logo.svg';
-import ShowInverse from './pages_mock/inverse-Show'
-import ShowDataHandle from './pages_mock/ShowDataView'
-import PostDataHandle from './pages_mock/PostDataView'
+// import ShowInverse from './[mock]pages/inverse-Show'
+// import ShowDataHandle from './[mock]pages/ShowDataView'
+// import PostDataHandle from './[mock]pages/PostDataView'
 
-import UpdateDataHandle from './pages_mock/UpdatedataView'
-import DeleteDataHandle from './pages_mock/DeleteDataView'
+// import UpdateDataHandle from './[mock]pages/UpdatedataView'
+// import DeleteDataHandle from './[mock]pages/DeleteDataView'
 
-import { ContainerProvider} from './services_mock/NewContainer'
+// import { ContainerProvider} from './[mock]services/NewContainer'
 
-import { AuthGetHandle, AuthUpdateHandle, AuthDeleteHandle } from './pages/AuthDataView';
-import { SignUpHandle, SignInHandle, SignOutHandle } from './pages/SignDataView';
+import { UserGetHandle, UserUpdateHandle, UserDeleteHandle } from './pages/UserView';
+import { SignUpHandle, SignInHandle, SignOutHandle } from './pages/SignView';
 import { NodeCreateHandle, NodeGetHandle, NodeUpdateHandle, NodeDeleteHandle } from './pages/NodeView';
 import { LessonCreateHandle, LessonGetHandle, LessonUpdateHandle, LessonDeleteHandle } from './pages/LessonView';
 import { CourseCreateHandle, CourseGetHandle, CourseUpdateHandle, CourseDeleteHandle } from './pages/CourseView';
@@ -22,9 +22,9 @@ function App() {
   return (
     <div className="App">
       <ContainerProviderTendon>
-        < AuthGetHandle />
-        < AuthUpdateHandle />
-        < AuthDeleteHandle />
+        < UserGetHandle />
+        < UserUpdateHandle />
+        < UserDeleteHandle />
         < SignUpHandle />
         < SignInHandle />
         < SignOutHandle />
