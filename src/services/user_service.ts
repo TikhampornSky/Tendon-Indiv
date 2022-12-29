@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { makeAutoObservable } from "mobx"
 import { injectable } from 'inversify'
-import { User } from '../../interfaces/TendonType'
+import { User } from '../interfaces/TendonType'
 
 @injectable()
 class AuthService {

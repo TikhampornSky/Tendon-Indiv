@@ -2,7 +2,7 @@ import React from "react"
 import { observer } from "mobx-react"
 import { useState, useEffect } from "react";
 
-import { useTendonContainer } from "../service/container";
+import { useTendonContainer } from "../services/container";
 import NodeShowDataViewModel from "./NodeViewModel";
 import { Node } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";

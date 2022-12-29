@@ -14,7 +14,7 @@ import { AuthGetHandle, AuthUpdateHandle, AuthDeleteHandle } from './pages/AuthD
 import { NodeCreateHandle, NodeGetHandle, NodeUpdateHandle, NodeDeleteHandle } from './pages/NodeView';
 import { LessonCreateHandle, LessonGetHandle, LessonUpdateHandle, LessonDeleteHandle } from './pages/LessonView';
 import { SignUpHandle, SignInHandle, SignOutHandle } from './pages/SignDataView';
-import { ContainerProviderTendon } from './service/container';
+import { ContainerProviderTendon } from './services/container';
 
 function App() {
   return (

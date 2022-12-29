@@ -2,7 +2,7 @@ import React from "react"
 import { observer } from "mobx-react"
 import { useState, useEffect } from "react";
 
-import { useTendonContainer } from "../service/container";
+import { useTendonContainer } from "../services/container";
 import SignShowDataViewModel from "./SignDataViewModel";
 import { User } from "../interfaces/TendonType";
 

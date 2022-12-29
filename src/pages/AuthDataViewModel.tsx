@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx"
 
 import { Container } from "inversify";
 import TYPES, { User } from '../interfaces/TendonType'
-import AuthService from "../service/services_user/auth_service";
+import AuthService from "../services/user_service";
 
 class AuthShowDataViewModel{
     private AuthService: AuthService 

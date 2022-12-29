@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx"
 
 import { Container } from "inversify";
 import TYPES, { User } from '../interfaces/TendonType'
-import SignService from "../service/services_user/sign_service";
+import SignService from "../services/sign_service";
 
 class SignShowDataViewModel{
     private SignService: SignService 

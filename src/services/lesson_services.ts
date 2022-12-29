@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { makeAutoObservable } from "mobx"
 import { injectable } from 'inversify'
-import { Lesson } from '../../interfaces/TendonType'
+import { Lesson } from '../interfaces/TendonType'
 
 @injectable()
 class LessonService {

@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx"
 
 import { Container } from "inversify";
 import TYPES, { Lesson } from '../interfaces/TendonType'
-import LessonService from "../service/services_lesson.ts/lesson_services";
+import LessonService from "../services/lesson_services";
 
 class LessonShowDataViewModel{
     private LessonService: LessonService 

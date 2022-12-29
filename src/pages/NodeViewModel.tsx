@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx"
 
 import { Container } from "inversify";
 import TYPES, { Node } from '../interfaces/TendonType'
-import NodeService from "../service/services_node/node_services";
+import NodeService from "../services/node_services";
 
 class NodeShowDataViewModel{
     private NodeService: NodeService 
