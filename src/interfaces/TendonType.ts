@@ -18,7 +18,7 @@ export interface Course {
     access: string
     createBy: string
     updateAt: string
-    lesssons: string[]
+    lessons: string[]
 }
 
 export interface Lesson {
@@ -45,7 +45,8 @@ let TYPES = {
     AuthService: Symbol("AuthService"),
     SignService: Symbol("SignService"),
     NodeService: Symbol("NodeService"),
-    LessonService: Symbol("LessonService")
+    LessonService: Symbol("LessonService"),
+    CourseService: Symbol("CourseService")
 };
 
 export default TYPES

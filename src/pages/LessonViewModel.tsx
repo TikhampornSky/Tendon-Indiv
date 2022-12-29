@@ -40,7 +40,7 @@ class LessonShowDataViewModel{
         } else {
             this.handleErrorStatus()
         }
-        return {} as Node
+        return {} as Lesson
     }
 
     async updateLessonData(id: string, token: string, body: Lesson) {
@@ -52,7 +52,7 @@ class LessonShowDataViewModel{
         } else {
             this.handleErrorStatus()
         }
-        return {} as Node
+        return {} as Lesson
     }
 
     async deleteLesson(id: string, token: string) {

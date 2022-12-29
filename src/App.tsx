@@ -11,9 +11,11 @@ import DeleteDataHandle from './pages_mock/DeleteDataView'
 import { ContainerProvider} from './services_mock/NewContainer'
 
 import { AuthGetHandle, AuthUpdateHandle, AuthDeleteHandle } from './pages/AuthDataView';
+import { SignUpHandle, SignInHandle, SignOutHandle } from './pages/SignDataView';
 import { NodeCreateHandle, NodeGetHandle, NodeUpdateHandle, NodeDeleteHandle } from './pages/NodeView';
 import { LessonCreateHandle, LessonGetHandle, LessonUpdateHandle, LessonDeleteHandle } from './pages/LessonView';
-import { SignUpHandle, SignInHandle, SignOutHandle } from './pages/SignDataView';
+import { CourseCreateHandle, CourseGetHandle, CourseUpdateHandle, CourseDeleteHandle } from './pages/CourseView';
+
 import { ContainerProviderTendon } from './services/container';
 
 function App() {
@@ -38,15 +40,21 @@ function App() {
         < LessonGetHandle />
         < LessonUpdateHandle />
         < LessonDeleteHandle />
+        <hr></hr>
+        <hr></hr>
+        < CourseCreateHandle />
+        < CourseGetHandle />
+        < CourseUpdateHandle />
+        < CourseDeleteHandle />
       </ContainerProviderTendon>
 
-      <ContainerProvider>
+      {/* <ContainerProvider>
         < ShowInverse />
         < PostDataHandle />
         < UpdateDataHandle />
         < DeleteDataHandle />
         < ShowDataHandle />
-      </ContainerProvider>
+      </ContainerProvider> */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
