@@ -12,6 +12,7 @@ import { ContainerProvider} from './services_mock/NewContainer'
 
 import { AuthGetHandle, AuthUpdateHandle, AuthDeleteHandle } from './pages/AuthDataView';
 import { NodeCreateHandle, NodeGetHandle, NodeUpdateHandle, NodeDeleteHandle } from './pages/NodeView';
+import { LessonCreateHandle, LessonGetHandle, LessonUpdateHandle, LessonDeleteHandle } from './pages/LessonView';
 import { SignUpHandle, SignInHandle, SignOutHandle } from './pages/SignDataView';
 import { ContainerProviderTendon } from './service/container';
 
@@ -31,6 +32,12 @@ function App() {
         < NodeGetHandle />
         < NodeUpdateHandle />
         < NodeDeleteHandle />
+        <hr></hr>
+        <hr></hr>
+        < LessonCreateHandle />
+        < LessonGetHandle />
+        < LessonUpdateHandle />
+        < LessonDeleteHandle />
       </ContainerProviderTendon>
 
       <ContainerProvider>
