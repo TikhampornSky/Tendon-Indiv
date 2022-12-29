@@ -3,6 +3,11 @@ import React from 'react';
 
 import { createBrowserRouter, RouterProvider, } from "react-router-dom";
 import Admin from './Admin';
+import AdminUser from './admin_page/Admin_user';
+import AdminSign from './admin_page/Admin_sign';
+import AdminNode from './admin_page/Admin_node';
+import AdminLesson from './admin_page/Admin_lesson';
+import AdminCourse from './admin_page/Admin_course';
 import ControlPage from './ControlPage';
 import ErrorPage from './Error_pages';
 
@@ -15,6 +20,31 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: < Admin />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin/user",
+    element: < AdminUser />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin/sign",
+    element: < AdminSign />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin/node",
+    element: < AdminNode />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin/lesson",
+    element: < AdminLesson />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/admin/course",
+    element: < AdminCourse />,
     errorElement: <ErrorPage />,
   },
 ]);

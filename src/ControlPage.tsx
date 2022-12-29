@@ -8,19 +8,19 @@ export default function ControlPage() {
             <nav>
             <div>
                 <p>
-                    <a href={`contacts/1`}> User </a>
+                    <a href={`admin/user`}> User </a>
                 </p>
                 <p>
-                    <a href={`contacts/1`}> Sign </a>
+                    <a href={`admin/sign`}> Sign </a>
                 </p>
                 <p>
-                    <a href={`contacts/1`}> Node </a>
+                    <a href={`admin/node`}> Node </a>
                 </p>
                 <p>
-                    <a href={`contacts/2`}> Lesson </a>
+                    <a href={`admin/lesson`}> Lesson </a>
                 </p>
                 <p>
-                    <a href={`contacts/1`}> Course </a>
+                    <a href={`admin/course`}> Course </a>
                 </p>
             </div>
             </nav>
