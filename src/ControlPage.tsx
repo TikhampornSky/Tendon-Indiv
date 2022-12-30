@@ -1,10 +1,11 @@
 import React from "react";
+import './ControlPage.css'
 
 export default function ControlPage() {
     return (
         <>
             <div id="sidebar">
-            <h1> Control Page </h1>
+            <h1 style={{color: "pink"}} > Control Page </h1>
             <nav>
             <div>
                 <p>

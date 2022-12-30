@@ -24,9 +24,9 @@ function App() {
   return (
     <div className="App">
       <ContainerProviderTendon>
-        < UserGetHandle />
-        < UserUpdateHandle />
-        < UserDeleteHandle />
+        {/* < UserGetHandle /> */}
+        {/* < UserUpdateHandle />
+        < UserDeleteHandle /> */}
         < SignUpHandle />
         < SignInHandle />
         < SignOutHandle />

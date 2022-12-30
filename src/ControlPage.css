@@ -1,0 +1,20 @@
+body {
+    background-color: #282c34;
+    color: white;
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+}
+
+p {
+    margin: 80px;
+}
+
+a {
+    background-color: rgb(89, 117, 239);
+    color: wheat;
+    padding: 25px 50px 25px;
+}
+a:hover {
+    background-color: rgb(43, 64, 255);
+}

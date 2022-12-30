@@ -6,16 +6,19 @@ import UserDataViewModel from './UserViewModel'
 import { useTendonContainer } from "../services/container";
 import { User } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
-import { user_id, user_id_delete } from "../_demo_setting";
 
-export const UserGetHandle = observer(() => {              
+interface UserProps {
+    user_id: string
+}
 
+export const UserGetHandle = observer((props: UserProps) => {              
+    const userID = props.user_id
     const [userGetView, setUserGetView] = useState<User>({} as User)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new UserDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
-            const tmpValue = viewModel.getUserInformation(user_id, token)
+            const tmpValue = viewModel.getUserInformation(userID, token)
             myResolve(tmpValue)
         }, [])
     }).then(() => {
@@ -24,12 +27,18 @@ export const UserGetHandle = observer(() => {
     })
 
     if (userGetView.id === undefined) {
-        return (
-            <div>
-                <p> "GET ERROR ZONE: " </p>
-                <p> { message } </p>
-            </div>              
-        )
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        } else {
+            return (
+                <div>
+                    <p> "GET ERROR ZONE: " </p>
+                    <p> { message } </p>
+                </div>              
+            )
+        }
     }
 
     return (
@@ -40,8 +49,8 @@ export const UserGetHandle = observer(() => {
     )
 })
 
-export const UserUpdateHandle = observer(() => {              
-
+export const UserUpdateHandle = observer((props: UserProps) => {              
+    const userID = props.user_id
     const [userView, setUserView] = useState<User>({} as User)  
     const [message, setMessage] = useState<String>("")
     var body: User = {
@@ -59,7 +68,7 @@ export const UserUpdateHandle = observer(() => {
     const viewModel = new UserDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
-            const tmpValue = viewModel.updateUserInformation(user_id, token, body)
+            const tmpValue = viewModel.updateUserInformation(userID, token, body)
             myResolve(tmpValue)
         }, [])
     }).then(() => {
@@ -68,6 +77,13 @@ export const UserUpdateHandle = observer(() => {
     })
 
     if (userView.id === undefined) {
+        if (message === "") {
+            return (
+                <>
+                    <p> Loading... </p>
+                </>
+            )
+        }
         return (
             <div>
                 <p> "UPDATE ERROR ZONE: " </p>
@@ -84,15 +100,15 @@ export const UserUpdateHandle = observer(() => {
     )
 })
 
-export const UserDeleteHandle = observer(() => { 
-
+export const UserDeleteHandle = observer((props: UserProps) => { 
+    const userID = props.user_id
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new UserDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
-            const tmpValue = viewModel.deleteUserInformation(user_id_delete, token)
+            const tmpValue = viewModel.deleteUserInformation(userID, token)
             myResolve(tmpValue)
         }, [])
     }).then(() => {
@@ -108,6 +124,13 @@ export const UserDeleteHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <>
+                    <p> Loading... </p>
+                </>
+            )
+        }
         return (
             <div>
                 <p> "DELETE ERROR ZONE: " </p>

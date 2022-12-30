@@ -1,0 +1,17 @@
+input[type="text"] {
+    height: 30px;
+    width: 300px;
+    margin-right: 20px;
+    margin-left: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: plum;
+    height: auto;
+    width: auto;
+    padding: 10px;
+    border-radius: 8px;
+}
