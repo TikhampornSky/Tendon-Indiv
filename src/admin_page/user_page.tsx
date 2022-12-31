@@ -87,19 +87,19 @@ function InputForUpdate(UpdateCase: updateCase) {
         return (
             <>
                 <div className='update-field'>
-                    Firstname: 
+                    <div className='label-update'>Firstname: </div> 
                     <input type="text" onChange={ onChangeFName } />
                 </div>
                 <div className='update-field'>
-                    Lastname:
+                    <div className='label-update'>Lastname: </div> 
                     <input type="text" onChange={ onChangeLName } />
                 </div>
                 <div className='update-field'>
-                    Email:
+                    <div className='label-update'>Email: </div> 
                     <input type="text" onChange={ onChangeEmail } />
                 </div>
                 <div className='update-field'>
-                    Password:
+                    <div className='label-update'>Password: </div> 
                     <input type="text" onChange={ onChangePassword } />
                 </div>
             </>

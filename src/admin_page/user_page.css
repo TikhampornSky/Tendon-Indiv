@@ -15,15 +15,26 @@ button {
     padding: 10px;
     border-radius: 8px;
 }
+button:hover {
+    background-color: rgb(245, 23, 249);
+}
 
 .button-shown {
-    background-color: rgb(93, 0, 253);
+    background-color: rgb(161, 108, 252);
     color: azure;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+.button-shown:hover {
+    background-color: rgb(93, 0, 253);
 }
 
 .update-field {
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.label-update {
+    display: inline-block;
+    width: 100px;
 }
