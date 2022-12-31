@@ -63,7 +63,7 @@ export const SignInHandle = observer(() => {
     var body: User = {
         firstName: "",
         lastName: "",
-        email: "t@email.com",
+        email: "tikhamporntan@gmail.com",
         password: "12345678",
         id: "",
         createAt: "",

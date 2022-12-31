@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './user_page.css'
-import UserInputPage from './user_page';
+import './admin_page.css'
+import UserInputPage from './admin_user_page';
 
 interface showComponentModel {
   showGet: boolean,
