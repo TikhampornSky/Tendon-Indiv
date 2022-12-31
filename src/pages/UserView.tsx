@@ -8,7 +8,8 @@ import { User } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
 
 interface UserProps {
-    user_id: string
+    user_id: string,
+    body: User
 }
 
 export const UserGetHandle = observer((props: UserProps) => {              
@@ -53,18 +54,7 @@ export const UserUpdateHandle = observer((props: UserProps) => {
     const userID = props.user_id
     const [userView, setUserView] = useState<User>({} as User)  
     const [message, setMessage] = useState<String>("")
-    var body: User = {
-        firstName: "Tontan",
-        lastName: "Tomato",
-        email: "t@email.com",
-        password: "12345678",
-        id: "",
-        createAt: "",
-        updateAt: "",
-        type: "",
-        role: "",
-        accessToken: ''
-    }
+    var body = props.body
     const viewModel = new UserDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -130,13 +120,14 @@ export const UserDeleteHandle = observer((props: UserProps) => {
                     <p> Loading... </p>
                 </>
             )
+        } else {
+            return (
+                <div>
+                    <p> "DELETE ERROR ZONE: " </p>
+                    <p> { message } </p>
+                </div>              
+            )
         }
-        return (
-            <div>
-                <p> "DELETE ERROR ZONE: " </p>
-                <p> { message } </p>
-            </div>              
-        )
     }
 })
 

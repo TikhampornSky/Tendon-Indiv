@@ -15,3 +15,15 @@ button {
     padding: 10px;
     border-radius: 8px;
 }
+
+.button-shown {
+    background-color: rgb(93, 0, 253);
+    color: azure;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.update-field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

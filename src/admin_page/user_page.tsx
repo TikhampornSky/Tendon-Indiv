@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
+import './user_page.css'
 import { UserGetHandle, UserUpdateHandle, UserDeleteHandle } from '../pages/UserView';
 import { ContainerProviderTendon } from '../services/container';
+import { User } from "../interfaces/TendonType";
 
 type stateType = {
     id: string;
 };
 
-interface inputType {
-    method: string
-}
-
 interface resultShowType {
     IsShow: boolean,
     ID: string,
-    method: string
+    method: string,
+    body: User
 }
 
 interface updateCase {
     isUpdate: boolean
 }
+
+interface userInputpageType {
+    method: string,
+    shown: boolean
+}
+
+var updatedata = {} as User
 
 function ShowResultField(props: resultShowType) {
     if (props.IsShow === true) {
@@ -27,7 +33,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <UserGetHandle user_id = { props.ID } ></UserGetHandle>
+                            <UserGetHandle user_id = { props.ID } body = { {} as User} ></UserGetHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -37,7 +43,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <UserUpdateHandle user_id = { props.ID } ></UserUpdateHandle>
+                            <UserUpdateHandle user_id = { props.ID } body = {props.body} ></UserUpdateHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -47,7 +53,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <UserDeleteHandle user_id = { props.ID } ></UserDeleteHandle>
+                            <UserDeleteHandle user_id = { props.ID } body = { {} as User}></UserDeleteHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -65,29 +71,37 @@ function ShowResultField(props: resultShowType) {
 }
 
 function InputForUpdate(UpdateCase: updateCase) {
-    const [firstname, setFirstName] = useState<string>("")
     const onChangeFName = (e: React.FormEvent<HTMLInputElement>): void => {
-        setFirstName(e.currentTarget.value)
+        updatedata.firstName = e.currentTarget.value
     };
-    const [lastname, setLastName] = useState<string>("")
     const onChangeLName = (e: React.FormEvent<HTMLInputElement>): void => {
-        setLastName(e.currentTarget.value)
+        updatedata.lastName = e.currentTarget.value
     };
-    const [email, setEmail] = useState<string>("")
     const onChangeEmail = (e: React.FormEvent<HTMLInputElement>): void => {
-        setEmail(e.currentTarget.value)
+        updatedata.email = e.currentTarget.value
     };
-    const [password, setPassword] = useState<string>("")
     const onChangePassword = (e: React.FormEvent<HTMLInputElement>): void => {
-        setPassword(e.currentTarget.value)
+        updatedata.password = e.currentTarget.value
     };
     if (UpdateCase.isUpdate === true) {
         return (
             <>
-                <input type="text" value={ firstname } onChange={ onChangeFName } />
-                <input type="text" value={ lastname } onChange={ onChangeLName } />
-                <input type="text" value={ email } onChange={ onChangeEmail } />
-                <input type="text" value={ password } onChange={ onChangePassword } />
+                <div className='update-field'>
+                    Firstname: 
+                    <input type="text" onChange={ onChangeFName } />
+                </div>
+                <div className='update-field'>
+                    Lastname:
+                    <input type="text" onChange={ onChangeLName } />
+                </div>
+                <div className='update-field'>
+                    Email:
+                    <input type="text" onChange={ onChangeEmail } />
+                </div>
+                <div className='update-field'>
+                    Password:
+                    <input type="text" onChange={ onChangePassword } />
+                </div>
             </>
         )
     } else {
@@ -98,7 +112,7 @@ function InputForUpdate(UpdateCase: updateCase) {
     
 }
 
-export default function UserInputPage(method: inputType) {
+export default function UserInputPage(props: userInputpageType) {
     const [state, setState] = useState<stateType>({ id: "" })
     const [showResult, setShowResult] = useState<boolean>(false)
 
@@ -107,21 +121,27 @@ export default function UserInputPage(method: inputType) {
         setShowResult(false)
     };
 
-    const submitGET = (): void => {
-        console.log(state)
+    const submitHandle = (): void => {
         setShowResult(true)
     }
 
-    return (
-        <>
-            <div>
-                [ {method.method} method ]  Please Enter User's ID:  
-                <input type="text" value={ state.id } onChange={ onChange } />
-                <InputForUpdate isUpdate = { method.method === "UPDATE" } />
-                <button onClick={ submitGET }> Submit </button>
-                {/* <p> { state.text } </p> */}
-            </div>
-            <ShowResultField IsShow={ showResult } ID = { state.id } method = { method.method } />
-        </>
-    );
+    if (props.shown === false) {
+        return (
+            <>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <div>
+                    [ {props.method} method ]  Please Enter User's ID:  
+                    <input type="text" value={ state.id } onChange={ onChange } />
+                    <InputForUpdate isUpdate = { props.method === "UPDATE" } />
+                    <button onClick={ submitHandle }> Submit </button>
+                    {/* <p> { state.text } </p> */}
+                </div>
+                <ShowResultField IsShow={ showResult } ID = { state.id } method = { props.method } body = { updatedata } />
+            </>
+        );
+    }
 }

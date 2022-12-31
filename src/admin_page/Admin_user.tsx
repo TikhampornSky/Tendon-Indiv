@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './user_page.css'
 import UserInputPage from './user_page';
 
-import { UserGetHandle, UserUpdateHandle, UserDeleteHandle } from '../pages/UserView';
-
-import { ContainerProviderTendon } from '../services/container';
-
+interface showComponentModel {
+  showGet: boolean,
+  showUpdate: boolean,
+  showDelete: boolean
+}
 
 function AdminUser() {
+  const [show, setShow] = useState<showComponentModel>({showGet: false, showUpdate:false, showDelete:false})
+
+  function submitHandle (method: string) {
+    if (method === "Get") {
+      setShow({showGet: !show.showGet, showUpdate: show.showUpdate, showDelete: show.showDelete})
+    } else if (method === "Update") {
+      setShow({showGet: show.showGet, showUpdate: !show.showUpdate, showDelete: show.showDelete})
+    } else {
+      setShow({showGet: show.showGet, showUpdate :show.showUpdate, showDelete: !show.showDelete})
+    }
+  }
+  
   return (
     <div className="App">
-      <div> 
-        <UserInputPage method ="GET" />
+      <div>
+        <button onClick={ () => submitHandle("Get")} className="button-shown"> GET </button>
+        <UserInputPage method ="GET" shown = {show.showGet} />
       </div>  
-      <UserInputPage method ="UPDATE" />
-      <UserInputPage method ="DELETE" />
-      {/* <ContainerProviderTendon>
-        < UserGetHandle />
-        < UserUpdateHandle />
-        < UserDeleteHandle />
-      </ContainerProviderTendon> */}
+      <div> 
+        <button onClick={ () => submitHandle("Update")} className="button-shown"> UPDATE </button>  
+        <UserInputPage method ="UPDATE" shown = {show.showUpdate} />
+      </div>
+      <div>  
+        <button onClick={ () => submitHandle("Delete")} className="button-shown"> DELETE </button>
+        <UserInputPage method ="DELETE" shown = {show.showDelete} />
+      </div> 
     </div>
   );
 }

@@ -51,7 +51,6 @@ class AuthService {
             })
         } catch (err) {
             this.status = Object(err)["response"]["request"]["status"]
-            // console.log(this.status)
             this.response = {} as User
         }
         return this.response
@@ -68,7 +67,9 @@ class AuthService {
                 this.status = res.status
             })
         } catch(err) {
-            this.status = Object(err)["response"]["request"]["status"]
+            if (this.status !== 200) {
+                this.status = Object(err)["response"]["request"]["status"]
+            }
         }
         return this.status
     }
