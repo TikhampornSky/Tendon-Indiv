@@ -8,23 +8,15 @@ import { User } from "../interfaces/TendonType";
 
 export var user_id_new: string;         // For Testing purpose
 
-export const SignUpHandle = observer(() => {
+interface signViewInterface {
+    body: User
+}
 
+export const SignUpHandle = observer((signView: signViewInterface) => {
+    const body = signView.body
     const [userView, setUserView] = useState<User>({} as User)
     const [message, setMessage] = useState<String>("")
     const [status, setStatus] = useState<Number>(0)   
-    var body: User = {
-        firstName: "tmpTmp",
-        lastName: "tmpppp",
-        email: "tmp1234@email.com",
-        password: "12345678",
-        id: "",
-        createAt: "",
-        updateAt: "",
-        type: "",
-        role: "",
-        accessToken: ''
-    }
     const viewModel = new SignDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
@@ -46,6 +38,13 @@ export const SignUpHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div>
+                    <p> Loading... </p>
+                </div>
+            )
+        }
         return (
             <div>
                 <p> "Sign-up ERROR ZONE: " </p>
@@ -55,23 +54,11 @@ export const SignUpHandle = observer(() => {
     }
 })
 
-export const SignInHandle = observer(() => {
-
+export const SignInHandle = observer((signView: signViewInterface) => {
+    const body = signView.body
     const [userView, setUserView] = useState<User>({} as User)
     const [message, setMessage] = useState<String>("")
     const [status, setStatus] = useState<Number>(0)   
-    var body: User = {
-        firstName: "",
-        lastName: "",
-        email: "tikhamporntan@gmail.com",
-        password: "12345678",
-        id: "",
-        createAt: "",
-        updateAt: "",
-        type: "",
-        role: "",
-        accessToken: ''
-    }
     const viewModel = new SignDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
@@ -93,6 +80,13 @@ export const SignInHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div>
+                    <p> Loading... </p>
+                </div>
+            )
+        }
         return (
             <div>
                 <p> "Sign-In ERROR ZONE: " </p>
@@ -126,6 +120,13 @@ export const SignOutHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div>
+                    <p> Loading... </p>
+                </div>
+            )
+        }
         return (
             <div>
                 <p> "Sign-Out ERROR ZONE: (Doesn't Finish) " </p>

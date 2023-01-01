@@ -68,7 +68,7 @@ class SignDataViewModel{
 
     private handleErrorStatus() {
         if (this.status === 400) {
-            this.message = "some field not exit"
+            this.message = "some field not exit --> " + this.SignService.getMessage()
         } else if (this.status === 401) {
             this.message = "Unauthorized"
         } else if (this.status === 404) {

@@ -7,11 +7,13 @@ import { User } from '../interfaces/TendonType'
 class SignService {
     response: User
     status: number
+    message: string[]
 
     constructor() {
         makeAutoObservable(this)
         this.response = {} as User
         this.status = 0
+        this.message = []
     }
 
     async signUp(body: User) {
@@ -27,6 +29,10 @@ class SignService {
         })
         .catch((err) => {
             this.status = Object(err)["response"]["request"]["status"]
+            this.message =  [Object(err)["response"]["data"]["error"]["signUpReq.Email"], 
+            Object(err)["response"]["data"]["error"]["signUpReq.FirstName"],
+            Object(err)["response"]["data"]["error"]["signUpReq.LastName"],
+            Object(err)["response"]["data"]["error"]["signUpReq.Password"]]
             this.response = {} as User
         });
 
@@ -45,6 +51,7 @@ class SignService {
         .catch((err) => {
             this.status = Object(err)["response"]["request"]["status"]
             this.response = {} as User
+            this.message = [Object(err)["response"]["data"]["error"]["signInReq.Email"], Object(err)["response"]["data"]["error"]["signInReq.Password"] ]
         });
 
         return this.response
@@ -72,6 +79,10 @@ class SignService {
 
     public getResponse() {
         return this.response
+    }
+
+    public getMessage() {
+        return this.message
     }
 
 }

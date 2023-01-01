@@ -27,14 +27,14 @@ function App() {
         {/* < UserGetHandle /> */}
         {/* < UserUpdateHandle />
         < UserDeleteHandle /> */}
-        < SignUpHandle />
+        {/* < SignUpHandle />
         < SignInHandle />
-        < SignOutHandle />
+        < SignOutHandle /> */}
         <hr></hr>
         <hr></hr>
-        < NodeCreateHandle />
+        {/* < NodeCreateHandle /> */}
         < NodeGetHandle />
-        < NodeUpdateHandle />
+        {/* < NodeUpdateHandle />
         < NodeDeleteHandle />
         <hr></hr>
         <hr></hr>
@@ -47,7 +47,7 @@ function App() {
         < CourseCreateHandle />
         < CourseGetHandle />
         < CourseUpdateHandle />
-        < CourseDeleteHandle />
+        < CourseDeleteHandle /> */}
       </ContainerProviderTendon>
 
       {/* <ContainerProvider>
