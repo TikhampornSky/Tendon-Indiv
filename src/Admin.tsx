@@ -33,7 +33,7 @@ function App() {
         <hr></hr>
         <hr></hr>
         {/* < NodeCreateHandle /> */}
-        < NodeGetHandle />
+        {/* < NodeGetHandle /> */}
         {/* < NodeUpdateHandle />
         < NodeDeleteHandle />
         <hr></hr>

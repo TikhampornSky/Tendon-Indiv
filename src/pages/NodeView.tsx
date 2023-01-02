@@ -8,18 +8,15 @@ import { Node } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
 import { node_id, node_id_delete } from "../_demo_setting";
 
-export const NodeCreateHandle = observer(() => {
+interface propsInterface {
+    body: Node
+}
 
+export const NodeCreateHandle = observer((props: propsInterface) => {
+    const body = props.body
     const [nodeView, setNodeView] = useState<Node>({} as Node)
     const [message, setMessage] = useState<String>("")
     const [status, setStatus] = useState<Number>(0)   
-    var body: Node = {
-        id: '',
-        type: 'NewType',
-        data: 'BriefData',
-        createBy: '',
-        updateAt: '',
-    }
     const viewModel = new NodeDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
@@ -41,6 +38,11 @@ export const NodeCreateHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p> "NODE POST ERROR ZONE: " </p>
@@ -50,8 +52,8 @@ export const NodeCreateHandle = observer(() => {
     }
 })
 
-export const NodeGetHandle = observer(() => {              
-
+export const NodeGetHandle = observer((props: propsInterface) => {              
+    const node_id = props.body.id
     const [nodeView, setNodeView] = useState<Node>({} as Node)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new NodeDataViewModel(useTendonContainer())
@@ -66,6 +68,11 @@ export const NodeGetHandle = observer(() => {
     })
 
     if (nodeView.id === undefined) {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p>  "NODE GET ERROR ZONE: " </p>
@@ -105,6 +112,11 @@ export const NodeUpdateHandle = observer(() => {
     })
 
     if (nodeView.id === undefined) {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p> "NODE UPDATE ERROR ZONE: " </p>
@@ -145,6 +157,11 @@ export const NodeDeleteHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p> "NODE DELETE ERROR ZONE: " </p>

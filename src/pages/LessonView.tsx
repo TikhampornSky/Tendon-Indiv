@@ -45,6 +45,11 @@ export const LessonCreateHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p> "Lesson POST ERROR ZONE: " </p>
@@ -70,6 +75,11 @@ export const LessonGetHandle = observer(() => {
     })
 
     if (lessonView.id === undefined) {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p>  "LESSON GET ERROR ZONE: " </p>
@@ -113,6 +123,11 @@ export const LessonUpdateHandle = observer(() => {
     })
 
     if (lessonView.id === undefined) {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p> "LESSON UPDATE ERROR ZONE: " </p>
@@ -153,6 +168,11 @@ export const LessonDeleteHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p> "LESSON DELETE ERROR ZONE: " </p>

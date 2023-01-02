@@ -1,0 +1,211 @@
+import React, { useEffect, useState } from "react";
+import { Node } from "../interfaces/TendonType";
+
+import { NodeCreateHandle, NodeGetHandle, NodeUpdateHandle, NodeDeleteHandle } from '../pages/NodeView';
+import { ContainerProviderTendon } from '../services/container';
+
+interface resultShowType {
+    IsShow: boolean,
+    method: string,
+    body: Node,
+}
+interface showResultInterface {
+    shownCreate: boolean,
+    shownGet: boolean,
+    shownUpdate: boolean,
+    shownDelete: boolean
+}
+
+var node:Node = {} as Node
+
+function ShowResultField(props: resultShowType) {
+    if (props.IsShow === true) {
+        if (props.method === "CREATE") {
+            return (
+                <>
+                    <ContainerProviderTendon>
+                        <div>
+                            <NodeCreateHandle body = {props.body} ></NodeCreateHandle>
+                        </div>
+                    </ContainerProviderTendon>
+                </>
+            )
+        } else if (props.method === "GET") {
+            return (
+                <>
+                    <ContainerProviderTendon>
+                        <div>
+                            {/* <NodeGetHandle body = {props.body} ></NodeGetHandle> */}
+                        </div>
+                    </ContainerProviderTendon>
+                </>
+            )
+        } else if ( props.method === "UPDATE" ) {
+            return (
+                <>
+                    <ContainerProviderTendon>
+                        <div>
+                            <NodeUpdateHandle ></NodeUpdateHandle>
+                        </div>
+                    </ContainerProviderTendon>
+                </>
+            )
+        } else if ( props.method === "DELETE" ) {
+            return (
+                <>
+                    <ContainerProviderTendon>
+                        <div>
+                            <NodeDeleteHandle></NodeDeleteHandle>
+                        </div>
+                    </ContainerProviderTendon>
+                </>
+            )
+        } else {
+            return (
+                <> </>
+            )
+        }
+    } else {
+        return (
+            <></>
+        )
+    }
+}
+
+function IDNodeComponent() {
+    const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+        node = {
+            ...node,
+            id: e.currentTarget.value
+        }
+    };
+    return (
+        <>
+            <div className='form-field'>
+                <div className='label-update'>ID: </div> 
+                <input type="text" onChange={ onChange } />
+            </div>
+        </>
+    )
+}
+
+interface componentType {
+    state: showResultInterface,
+    setState: React.Dispatch<React.SetStateAction<showResultInterface>>,
+    method: string
+}
+
+function onChangeHandle(props: componentType) {
+    const shown = props.state
+    const setShown = props.setState
+    const method = props.method
+    if (method === "CREATE") {
+        setShown({shownCreate: false, shownGet:shown.shownGet, shownUpdate:shown.shownUpdate, shownDelete:shown.shownDelete})
+    } else if (method === "GET") {
+        setShown({shownCreate: shown.shownCreate, shownGet:false, shownUpdate:shown.shownUpdate, shownDelete:shown.shownDelete})
+    } else if (method === "UPDATE") {
+        setShown({shownCreate: shown.shownCreate, shownGet:shown.shownGet, shownUpdate:false, shownDelete:shown.shownDelete})
+    } else if (method === "DELETE") {
+        setShown({shownCreate: shown.shownCreate, shownGet:shown.shownGet, shownUpdate:shown.shownUpdate, shownDelete:false})
+    }
+}
+
+function FormNodeComponent(props: componentType) {
+    const onChangeType = (e: React.FormEvent<HTMLInputElement>): void => {
+        node = {
+            ...node,
+            type: e.currentTarget.value
+        }
+        onChangeHandle(props)
+    };
+    const onChangeData = (e: React.FormEvent<HTMLInputElement>): void => {
+        node = {
+            ...node,
+            data: e.currentTarget.value
+        }
+        onChangeHandle(props)
+    };
+    return (
+        <>
+            <div className='form-field'>
+                <div className='label-update'>Type: </div> 
+                <input type="text" onChange={ onChangeType } />
+            </div>
+            <div className='form-field'>
+                <div className='label-update'>Data: </div> 
+                <input type="text" onChange={ onChangeData } />
+            </div>
+        </>
+    )
+}
+
+interface propsInterface {
+    method: string
+}
+
+export default function NodePage(props: propsInterface) {
+    const [shown, setShown] = useState<showResultInterface>({shownCreate: false, shownGet:false, shownUpdate:false, shownDelete:false})
+    const submitHandle = (method: string): void => {
+        if (method === "CREATE") {
+            setShown({shownCreate: true, shownGet:shown.shownGet, shownUpdate:shown.shownUpdate, shownDelete:shown.shownDelete})
+        } else if (method === "GET") {
+            setShown({shownCreate: shown.shownCreate, shownGet:true, shownUpdate:shown.shownUpdate, shownDelete:shown.shownDelete})
+        } else if (method === "UPDATE") {
+            setShown({shownCreate: shown.shownCreate, shownGet:shown.shownGet, shownUpdate:true, shownDelete:shown.shownDelete})
+        } else if (method === "DELETE") {
+            setShown({shownCreate: shown.shownCreate, shownGet:shown.shownGet, shownUpdate:shown.shownUpdate, shownDelete:true})
+        }
+    }
+    if (props.method === "CREATE") {
+        return (
+            <>
+                <div>
+                    <p> CREATE NODE: </p>
+                    < FormNodeComponent  state= { shown } setState = { setShown } method = { "CREATE" } />
+                    <button onClick={ () => {submitHandle("CREATE")} }> Submit </button>
+                    < ShowResultField IsShow = {shown.shownCreate} method = "CREATE" body = { node } />
+                    <hr></hr>
+                </div>
+            </>
+        )
+    } else if (props.method === "GET") {
+        return (
+            <>
+                <div>
+                    <p> GET NODE: </p>
+                    < IDNodeComponent />
+                    <button onClick={ () => {submitHandle("GET")} }> Submit </button>
+                    {/* < ShowResultField IsShow = {shown.shownGet} method = "GET" body = { node } /> */}
+                    <hr></hr>
+                </div>
+            </>
+        )
+    } else if (props.method === "UPDATE") {
+        return (
+            <>
+                <div>
+                    <p> UPDATE NODE: </p>
+                    < IDNodeComponent />
+                    {/* < FormNodeComponent /> */}
+                    <button onClick={ () => {submitHandle("UPDATE")} }> Submit </button>
+                    <hr></hr>
+                </div>
+            </>
+        )
+    } else if (props.method === "DELETE") {
+        return (
+            <>
+                <div>
+                    <p> DELETE NODE: </p>
+                    < IDNodeComponent />
+                    <button onClick={ () => {submitHandle("DELETE")} }> Submit </button>
+                    <hr></hr>
+                </div>
+            </>
+        )
+    } else {
+        return (
+            <></>
+        )
+    }
+}

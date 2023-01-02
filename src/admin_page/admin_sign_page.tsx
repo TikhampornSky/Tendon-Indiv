@@ -105,19 +105,19 @@ export function SignUpPage(shown: showComponent) {
         <>
             <div>
                 <p> Sign Up </p>
-                <div className='update-field'>
+                <div className='form-field'>
                     <div className='label-update'>Firstname: </div> 
                     <input type="text" onChange={ onChangeFName } />
                 </div>
-                <div className='update-field'>
+                <div className='form-field'>
                     <div className='label-update'>Lastname: </div> 
                     <input type="text" onChange={ onChangeLName } />
                 </div>
-                <div className='update-field'>
+                <div className='form-field'>
                     <div className='label-update'>Email: </div> 
                     <input type="text" onChange={ onChangeEmail } />
                 </div>
-                <div className='update-field'>
+                <div className='form-field'>
                     <div className='label-update'>Password: </div> 
                     <input type="text" onChange={ onChangePassword } />
                 </div>
@@ -163,11 +163,11 @@ export function SignInPage(shown: showComponent) {
         <>
             <div>
                 <p> Sign In </p>
-                <div className='update-field'>
+                <div className='form-field'>
                     <div className='label-update'>Email: </div> 
                     <input type="text" onChange={ onChangeEmail } />
                 </div>
-                <div className='update-field'>
+                <div className='form-field'>
                     <div className='label-update'>Password: </div> 
                     <input type="text" onChange={ onChangePassword } />
                 </div>
