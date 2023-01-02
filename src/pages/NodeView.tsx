@@ -6,7 +6,6 @@ import { useTendonContainer } from "../services/container";
 import NodeDataViewModel from "./NodeViewModel";
 import { Node } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
-import { node_id, node_id_delete } from "../_demo_setting";
 
 interface propsInterface {
     body: Node
