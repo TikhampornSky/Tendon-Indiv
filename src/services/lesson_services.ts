@@ -37,6 +37,7 @@ class LessonService {
         .catch((err) => {
             this.status = Object(err)["response"]["request"]["status"]
             this.message = Object(err)["response"]["data"]["message"]
+            console.log(err)
             this.response = {} as Lesson
         });
 

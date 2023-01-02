@@ -173,12 +173,32 @@ const LessonView = observer(( {viewModel}: ShowDataViewProps) => {
         <div>
                 <div key= {viewModel.id}>
                     <p> #### {viewModel.id} #### </p>
-                    <li> {viewModel.name} </li>
-                    <li> {viewModel.description} </li>
-                    <li> {viewModel.nodes} </li>
-                    <li> {viewModel.prevLesson} </li>
-                    <li> {viewModel.nextLesson} </li>
-                    <hr></hr>
+                    <li> name: {viewModel.name} </li>
+                    <li> description: {viewModel.description} </li>
+                    <br></br>
+                    <li> nodes: 
+                        {viewModel.nodes.map((data: string) => (
+                            <div key= {data}>
+                                <p> {data} </p>
+                            </div>
+                        ))}
+                    </li>
+                    <br></br>
+                    <li> prevLesson: 
+                        {viewModel.prevLesson.map((data: string) => (
+                            <div key= {data}>
+                                <p> {data} </p>
+                            </div>
+                        ))}
+                    </li>
+                    <br></br>
+                    <li> nextLesson: 
+                        {viewModel.nextLesson.map((data: string) => (
+                            <div key= {data}>
+                                <p> {data} </p>
+                            </div>
+                        ))}
+                    </li>
                 </div>
         </div>
     )

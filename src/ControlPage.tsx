@@ -8,19 +8,19 @@ export default function ControlPage() {
             <h1 style={{color: "pink"}} > Control Page </h1>
             <nav>
             <div>
-                <p>
+                <p className="button-menu">
                     <a href={`admin/user`}> User </a>
                 </p>
-                <p>
+                <p className="button-menu">
                     <a href={`admin/sign`}> Sign </a>
                 </p>
-                <p>
+                <p className="button-menu">
                     <a href={`admin/node`}> Node </a>
                 </p>
-                <p>
+                <p className="button-menu">
                     <a href={`admin/lesson`}> Lesson </a>
                 </p>
-                <p>
+                <p className="button-menu">
                     <a href={`admin/course`}> Course </a>
                 </p>
             </div>

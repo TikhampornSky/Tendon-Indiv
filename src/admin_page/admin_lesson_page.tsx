@@ -111,6 +111,67 @@ function IDLESSONComponent(props: componentType) {
     )
 }
 
+interface componentArrayType {
+    state: showResultInterface,
+    setState: React.Dispatch<React.SetStateAction<showResultInterface>>,
+    method: string,
+    element: string
+}
+
+
+function ArrayComponent(props: componentArrayType) {
+    const [myArray, setMyArray] = useState<string[]>([]);
+    const [count, setCount] = useState<number>(0)
+    var newProps = {state: props.state, setState: props.setState, method: props.method}
+    const addElement = () => {
+        setMyArray((t) => [...t, ""]);
+        setCount(count+1)
+        onChangeHandle(newProps)
+    }
+    const deleteElement = async () => {
+        myArray.pop()
+        setCount(count-1)           // make component re-render
+        onChangeHandle(newProps)
+    }
+    const onChangeTextHandle = (e: React.FormEvent<HTMLInputElement>, index:number) => {
+        myArray[index] = e.currentTarget.value
+        if (props.element === "nodes") {
+            LESSON = {
+                ...LESSON,
+                nodes: myArray
+            }
+        } else  if (props.element === "prevL") {
+            LESSON = {
+                ...LESSON,
+                prevLesson: myArray
+            }
+        } else  if (props.element === "nextL") {
+            LESSON = {
+                ...LESSON,
+                nextLesson: myArray
+            }
+        } else {
+
+        }
+        onChangeHandle(newProps)
+    }
+
+    return (
+        <>  
+            <div>
+                {myArray.map((_, index) => {
+                return (
+                    // <p key= {index} > {data} {index} </p>
+                    <input  key= {index} type="text" onChange={ (e) => { onChangeTextHandle(e, index) } } />
+                )
+                })}
+            </div>
+            <button onClick={addElement} className="Add-button"> Add </button>
+            <button onClick={deleteElement} className="Add-button"> Delete </button>
+        </>
+    )
+}
+
 function FormLESSONComponent(props: componentType) {
     const onChangeName = (e: React.FormEvent<HTMLInputElement>): void => {
         LESSON = {
@@ -140,27 +201,7 @@ function FormLESSONComponent(props: componentType) {
         }
         onChangeHandle(props)
     };
-    const onChangeNodes = (e: React.FormEvent<HTMLInputElement>): void => {
-        LESSON = {
-            ...LESSON,
-            nodes: [e.currentTarget.value]
-        }
-        onChangeHandle(props)
-    };
-    const onChangeNextLesson = (e: React.FormEvent<HTMLInputElement>): void => {
-        LESSON = {
-            ...LESSON,
-            nextLesson: [e.currentTarget.value]
-        }
-        onChangeHandle(props)
-    };
-    const onChangePrevLesson = (e: React.FormEvent<HTMLInputElement>): void => {
-        LESSON = {
-            ...LESSON,
-            prevLesson: [e.currentTarget.value]
-        }
-        onChangeHandle(props)
-    };
+
     return (
         <>
             <div className='form-field'>
@@ -181,15 +222,15 @@ function FormLESSONComponent(props: componentType) {
             </div>
             <div className='form-field'>
                 <div className='label-update'>Nodes: </div> 
-                <input type="text" onChange={ onChangeNodes } />
+                < ArrayComponent state= { props.state } setState = { props.setState } method = { props.method } element = {"nodes"} />
             </div>
             <div className='form-field'>
                 <div className='label-update'>NextLesson: </div> 
-                <input type="text" onChange={ onChangeNextLesson } />
+                < ArrayComponent state= { props.state } setState = { props.setState } method = { props.method } element = {"nextL"} />
             </div>
             <div className='form-field'>
                 <div className='label-update'>PrevLesson: </div> 
-                <input type="text" onChange={ onChangePrevLesson } />
+                < ArrayComponent state= { props.state } setState = { props.setState } method = { props.method } element = {"prevL"} />
             </div>
         </>
     )

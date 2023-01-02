@@ -29,6 +29,18 @@ button:hover {
     background-color: rgb(93, 0, 253);
 }
 
+.Add-button {
+    background-color: rgb(255, 102, 0);
+    color: azure;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 15px;
+}
+
+.Add-button:hover {
+    background-color: rgb(255, 51, 0);
+}
+
 .form-field {
     margin-top: 10px;
     margin-bottom: 10px;
