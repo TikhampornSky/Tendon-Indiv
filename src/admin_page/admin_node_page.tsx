@@ -35,7 +35,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            {/* <NodeGetHandle body = {props.body} ></NodeGetHandle> */}
+                            <NodeGetHandle body = {props.body} ></NodeGetHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -45,7 +45,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <NodeUpdateHandle ></NodeUpdateHandle>
+                            <NodeUpdateHandle body = {props.body}></NodeUpdateHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -55,7 +55,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <NodeDeleteHandle></NodeDeleteHandle>
+                            <NodeDeleteHandle body = {props.body}></NodeDeleteHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -70,23 +70,6 @@ function ShowResultField(props: resultShowType) {
             <></>
         )
     }
-}
-
-function IDNodeComponent() {
-    const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
-        node = {
-            ...node,
-            id: e.currentTarget.value
-        }
-    };
-    return (
-        <>
-            <div className='form-field'>
-                <div className='label-update'>ID: </div> 
-                <input type="text" onChange={ onChange } />
-            </div>
-        </>
-    )
 }
 
 interface componentType {
@@ -108,6 +91,24 @@ function onChangeHandle(props: componentType) {
     } else if (method === "DELETE") {
         setShown({shownCreate: shown.shownCreate, shownGet:shown.shownGet, shownUpdate:shown.shownUpdate, shownDelete:false})
     }
+}
+
+function IDNodeComponent(props: componentType) {
+    const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
+        node = {
+            ...node,
+            id: e.currentTarget.value
+        }
+        onChangeHandle(props)
+    };
+    return (
+        <>
+            <div className='form-field'>
+                <div className='label-update'>ID: </div> 
+                <input type="text" onChange={ onChange } />
+            </div>
+        </>
+    )
 }
 
 function FormNodeComponent(props: componentType) {
@@ -173,9 +174,9 @@ export default function NodePage(props: propsInterface) {
             <>
                 <div>
                     <p> GET NODE: </p>
-                    < IDNodeComponent />
+                    < IDNodeComponent state= { shown } setState = { setShown } method = { "GET" } />
                     <button onClick={ () => {submitHandle("GET")} }> Submit </button>
-                    {/* < ShowResultField IsShow = {shown.shownGet} method = "GET" body = { node } /> */}
+                    < ShowResultField IsShow = {shown.shownGet} method = "GET" body = { node } />
                     <hr></hr>
                 </div>
             </>
@@ -185,9 +186,10 @@ export default function NodePage(props: propsInterface) {
             <>
                 <div>
                     <p> UPDATE NODE: </p>
-                    < IDNodeComponent />
-                    {/* < FormNodeComponent /> */}
+                    < IDNodeComponent state= { shown } setState = { setShown } method = { "UPDATE" } />
+                    < FormNodeComponent state= { shown } setState = { setShown } method = { "UPDATE" } />
                     <button onClick={ () => {submitHandle("UPDATE")} }> Submit </button>
+                    < ShowResultField IsShow = {shown.shownUpdate} method = "UPDATE" body = { node } />
                     <hr></hr>
                 </div>
             </>
@@ -197,8 +199,9 @@ export default function NodePage(props: propsInterface) {
             <>
                 <div>
                     <p> DELETE NODE: </p>
-                    < IDNodeComponent />
+                    < IDNodeComponent state= { shown } setState = { setShown } method = { "DELETE" } />
                     <button onClick={ () => {submitHandle("DELETE")} }> Submit </button>
+                    < ShowResultField IsShow = {shown.shownDelete} method = "DELETE" body = { node } />
                     <hr></hr>
                 </div>
             </>

@@ -89,17 +89,11 @@ export const NodeGetHandle = observer((props: propsInterface) => {
     )
 })
 
-export const NodeUpdateHandle = observer(() => {              
-
+export const NodeUpdateHandle = observer((props: propsInterface) => {              
+    const node_id = props.body.id
+    const body = props.body
     const [nodeView, setNodeView] = useState<Node>({} as Node)  
     const [message, setMessage] = useState<String>("")
-    var body: Node = {
-        id: '',
-        type: 'tttttttt2',
-        data: 'dddddddd',
-        createBy: '',
-        updateAt: '',
-    }
     const viewModel = new NodeDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -133,15 +127,15 @@ export const NodeUpdateHandle = observer(() => {
     )
 })
 
-export const NodeDeleteHandle = observer(() => { 
-
+export const NodeDeleteHandle = observer((props: propsInterface) => { 
+    const node_id = props.body.id
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new NodeDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
-            const tmpValue = viewModel.deleteNode(node_id_delete, token)
+            const tmpValue = viewModel.deleteNode(node_id, token)
             myResolve(tmpValue)
         }, [])
     }).then(() => {

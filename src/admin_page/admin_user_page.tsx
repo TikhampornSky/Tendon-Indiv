@@ -16,7 +16,9 @@ interface resultShowType {
 }
 
 interface updateCase {
-    isUpdate: boolean
+    isUpdate: boolean,
+    state: boolean,
+    setState: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface userInputpageType {
@@ -71,17 +73,23 @@ function ShowResultField(props: resultShowType) {
 }
 
 function InputForUpdate(UpdateCase: updateCase) {
+    const state = UpdateCase.state
+    const setState = UpdateCase.setState
     const onChangeFName = (e: React.FormEvent<HTMLInputElement>): void => {
         updatedata.firstName = e.currentTarget.value
+        setState(false)
     };
     const onChangeLName = (e: React.FormEvent<HTMLInputElement>): void => {
         updatedata.lastName = e.currentTarget.value
+        setState(false)
     };
     const onChangeEmail = (e: React.FormEvent<HTMLInputElement>): void => {
         updatedata.email = e.currentTarget.value
+        setState(false)
     };
     const onChangePassword = (e: React.FormEvent<HTMLInputElement>): void => {
         updatedata.password = e.currentTarget.value
+        setState(false)
     };
     if (UpdateCase.isUpdate === true) {
         return (
@@ -136,7 +144,7 @@ export default function UserInputPage(props: userInputpageType) {
                 <div>
                     [ {props.method} method ]  Please Enter User's ID:  
                     <input type="text" value={ state.id } onChange={ onChange } />
-                    <InputForUpdate isUpdate = { props.method === "UPDATE" } />
+                    <InputForUpdate isUpdate = { props.method === "UPDATE" } state = { showResult } setState = { setShowResult }/>
                     <button onClick={ submitHandle }> Submit </button>
                     {/* <p> { state.text } </p> */}
                 </div>
