@@ -6,24 +6,16 @@ import { useTendonContainer } from "../services/container";
 import LessonDataViewModel from "./LessonViewModel";
 import { Lesson } from "../interfaces/TendonType";
 import { token } from "../_demo_setting";
-import { lesson_id, lesson_id_delete } from "../_demo_setting";
 
-export const LessonCreateHandle = observer(() => {
+interface propsInterface {
+    body: Lesson
+}
 
+export const LessonCreateHandle = observer((props: propsInterface) => {
+    const body = props.body
     const [lessonView, setLessonView] = useState<Lesson>({} as Lesson)
     const [message, setMessage] = useState<String>("")
     const [status, setStatus] = useState<Number>(0)   
-    var body: Lesson = {
-        name: "NewLesson",
-        description: "LLL",
-        access: "public",
-        nodes: ["63ac57f9e68081422d62ee66"],
-        nextLesson: ["63ad011be68081422d62efa5", "63ad01bfe68081422d62efa6"],
-        prevLesson: ["63ad01bfe68081422d62efa6"],
-        createBy: "",
-        updateAt: "",
-        id: "",
-    }
     const viewModel = new LessonDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
@@ -59,8 +51,8 @@ export const LessonCreateHandle = observer(() => {
     }
 })
 
-export const LessonGetHandle = observer(() => {              
-
+export const LessonGetHandle = observer((props: propsInterface) => {              
+    const lesson_id = props.body.id
     const [lessonView, setLessonView] = useState<Lesson>({} as Lesson)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new LessonDataViewModel(useTendonContainer())
@@ -96,21 +88,11 @@ export const LessonGetHandle = observer(() => {
     )
 })
 
-export const LessonUpdateHandle = observer(() => {              
-
+export const LessonUpdateHandle = observer((props: propsInterface) => {              
+    const body = props.body
+    const lesson_id = props.body.id
     const [lessonView, setLessonView] = useState<Lesson>({} as Lesson)  
     const [message, setMessage] = useState<String>("")
-    var body: Lesson = {
-        name: "NewLesson",
-        description: "LLLLLLL",
-        access: "public",
-        nodes: ["63ac57f9e68081422d62ee66"],
-        nextLesson: ["63ad011be68081422d62efa5"],
-        prevLesson: ["63ad01bfe68081422d62efa6"],
-        createBy: "",
-        updateAt: "",
-        id: "",
-    }
     const viewModel = new LessonDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -144,15 +126,15 @@ export const LessonUpdateHandle = observer(() => {
     )
 })
 
-export const LessonDeleteHandle = observer(() => { 
-
+export const LessonDeleteHandle = observer((props: propsInterface) => { 
+    const lesson_id = props.body.id
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new LessonDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
-            const tmpValue = viewModel.deleteLesson(lesson_id_delete, token)
+            const tmpValue = viewModel.deleteLesson(lesson_id, token)
             myResolve(tmpValue)
         }, [])
     }).then(() => {

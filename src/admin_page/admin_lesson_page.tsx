@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Node } from "../interfaces/TendonType";
+import { Lesson } from "../interfaces/TendonType";
 
-import { NodeCreateHandle, NodeGetHandle, NodeUpdateHandle, NodeDeleteHandle } from '../pages/NodeView';
+import { LessonCreateHandle, LessonGetHandle, LessonUpdateHandle, LessonDeleteHandle } from '../pages/LessonView';
 import { ContainerProviderTendon } from '../services/container';
 
 interface resultShowType {
     IsShow: boolean,
     method: string,
-    body: Node,
+    body: Lesson,
 }
 interface showResultInterface {
     shownCreate: boolean,
@@ -16,7 +16,7 @@ interface showResultInterface {
     shownDelete: boolean
 }
 
-var node:Node = {} as Node
+var LESSON:Lesson = {} as Lesson
 
 function ShowResultField(props: resultShowType) {
     if (props.IsShow === true) {
@@ -25,7 +25,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <NodeCreateHandle body = {props.body} ></NodeCreateHandle>
+                            <LessonCreateHandle body = {props.body} ></LessonCreateHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -35,7 +35,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <NodeGetHandle body = {props.body} ></NodeGetHandle>
+                            <LessonGetHandle body = {props.body} ></LessonGetHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -45,7 +45,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <NodeUpdateHandle body = {props.body}></NodeUpdateHandle>
+                            <LessonUpdateHandle body = {props.body}></LessonUpdateHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -55,7 +55,7 @@ function ShowResultField(props: resultShowType) {
                 <>
                     <ContainerProviderTendon>
                         <div>
-                            <NodeDeleteHandle body = {props.body}></NodeDeleteHandle>
+                            <LessonDeleteHandle body = {props.body}></LessonDeleteHandle>
                         </div>
                     </ContainerProviderTendon>
                 </>
@@ -93,10 +93,10 @@ function onChangeHandle(props: componentType) {
     }
 }
 
-function IDNodeComponent(props: componentType) {
+function IDLESSONComponent(props: componentType) {
     const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
-        node = {
-            ...node,
+        LESSON = {
+            ...LESSON,
             id: e.currentTarget.value
         }
         onChangeHandle(props)
@@ -111,30 +111,85 @@ function IDNodeComponent(props: componentType) {
     )
 }
 
-function FormNodeComponent(props: componentType) {
-    const onChangeType = (e: React.FormEvent<HTMLInputElement>): void => {
-        node = {
-            ...node,
-            type: e.currentTarget.value
+function FormLESSONComponent(props: componentType) {
+    const onChangeName = (e: React.FormEvent<HTMLInputElement>): void => {
+        LESSON = {
+            ...LESSON,
+            name: e.currentTarget.value
         }
         onChangeHandle(props)
     };
-    const onChangeData = (e: React.FormEvent<HTMLInputElement>): void => {
-        node = {
-            ...node,
-            data: e.currentTarget.value
+    const onChangeDescription = (e: React.FormEvent<HTMLInputElement>): void => {
+        LESSON = {
+            ...LESSON,
+            description: e.currentTarget.value
+        }
+        onChangeHandle(props)
+    };
+    const onChangeAccess = (e: React.FormEvent<HTMLInputElement>): void => {
+        LESSON = {
+            ...LESSON,
+            access: e.currentTarget.value
+        }
+        onChangeHandle(props)
+    };
+    const onChangeCreateBy = (e: React.FormEvent<HTMLInputElement>): void => {
+        LESSON = {
+            ...LESSON,
+            createBy: e.currentTarget.value
+        }
+        onChangeHandle(props)
+    };
+    const onChangeNodes = (e: React.FormEvent<HTMLInputElement>): void => {
+        LESSON = {
+            ...LESSON,
+            nodes: [e.currentTarget.value]
+        }
+        onChangeHandle(props)
+    };
+    const onChangeNextLesson = (e: React.FormEvent<HTMLInputElement>): void => {
+        LESSON = {
+            ...LESSON,
+            nextLesson: [e.currentTarget.value]
+        }
+        onChangeHandle(props)
+    };
+    const onChangePrevLesson = (e: React.FormEvent<HTMLInputElement>): void => {
+        LESSON = {
+            ...LESSON,
+            prevLesson: [e.currentTarget.value]
         }
         onChangeHandle(props)
     };
     return (
         <>
             <div className='form-field'>
-                <div className='label-update'>Type: </div> 
-                <input type="text" onChange={ onChangeType } />
+                <div className='label-update'>Name: </div> 
+                <input type="text" onChange={ onChangeName } />
             </div>
             <div className='form-field'>
-                <div className='label-update'>Data: </div> 
-                <input type="text" onChange={ onChangeData } />
+                <div className='label-update'>Description: </div> 
+                <input type="text" onChange={ onChangeDescription } />
+            </div>
+            <div className='form-field'>
+                <div className='label-update'>Access: </div> 
+                <input type="text" onChange={ onChangeAccess } />
+            </div>
+            <div className='form-field'>
+                <div className='label-update'>CreateBy: </div> 
+                <input type="text" onChange={ onChangeCreateBy } />
+            </div>
+            <div className='form-field'>
+                <div className='label-update'>Nodes: </div> 
+                <input type="text" onChange={ onChangeNodes } />
+            </div>
+            <div className='form-field'>
+                <div className='label-update'>NextLesson: </div> 
+                <input type="text" onChange={ onChangeNextLesson } />
+            </div>
+            <div className='form-field'>
+                <div className='label-update'>PrevLesson: </div> 
+                <input type="text" onChange={ onChangePrevLesson } />
             </div>
         </>
     )
@@ -145,7 +200,7 @@ interface propsInterface {
     shown: boolean
 }
 
-export default function NodePage(props: propsInterface) {
+export default function LessonPage(props: propsInterface) {
     const [shown, setShown] = useState<showResultInterface>({shownCreate: false, shownGet:false, shownUpdate:false, shownDelete:false})
     const submitHandle = (method: string): void => {
         if (method === "CREATE") {
@@ -167,10 +222,10 @@ export default function NodePage(props: propsInterface) {
         return (
             <>
                 <div>
-                    <p> CREATE NODE: </p>
-                    < FormNodeComponent  state= { shown } setState = { setShown } method = { "CREATE" } />
+                    <p> CREATE LESSON: </p>
+                    < FormLESSONComponent  state= { shown } setState = { setShown } method = { "CREATE" } />
                     <button onClick={ () => {submitHandle("CREATE")} }> Submit </button>
-                    < ShowResultField IsShow = {shown.shownCreate} method = "CREATE" body = { node } />
+                    < ShowResultField IsShow = {shown.shownCreate} method = "CREATE" body = { LESSON } />
                     <hr></hr>
                 </div>
             </>
@@ -179,10 +234,10 @@ export default function NodePage(props: propsInterface) {
         return (
             <>
                 <div>
-                    <p> GET NODE: </p>
-                    < IDNodeComponent state= { shown } setState = { setShown } method = { "GET" } />
+                    <p> GET LESSON: </p>
+                    < IDLESSONComponent state= { shown } setState = { setShown } method = { "GET" } />
                     <button onClick={ () => {submitHandle("GET")} }> Submit </button>
-                    < ShowResultField IsShow = {shown.shownGet} method = "GET" body = { node } />
+                    < ShowResultField IsShow = {shown.shownGet} method = "GET" body = { LESSON } />
                     <hr></hr>
                 </div>
             </>
@@ -191,11 +246,11 @@ export default function NodePage(props: propsInterface) {
         return (
             <>
                 <div>
-                    <p> UPDATE NODE: </p>
-                    < IDNodeComponent state= { shown } setState = { setShown } method = { "UPDATE" } />
-                    < FormNodeComponent state= { shown } setState = { setShown } method = { "UPDATE" } />
+                    <p> UPDATE LESSON: </p>
+                    < IDLESSONComponent state= { shown } setState = { setShown } method = { "UPDATE" } />
+                    < FormLESSONComponent state= { shown } setState = { setShown } method = { "UPDATE" } />
                     <button onClick={ () => {submitHandle("UPDATE")} }> Submit </button>
-                    < ShowResultField IsShow = {shown.shownUpdate} method = "UPDATE" body = { node } />
+                    < ShowResultField IsShow = {shown.shownUpdate} method = "UPDATE" body = { LESSON } />
                     <hr></hr>
                 </div>
             </>
@@ -204,10 +259,10 @@ export default function NodePage(props: propsInterface) {
         return (
             <>
                 <div>
-                    <p> DELETE NODE: </p>
-                    < IDNodeComponent state= { shown } setState = { setShown } method = { "DELETE" } />
+                    <p> DELETE LESSON: </p>
+                    < IDLESSONComponent state= { shown } setState = { setShown } method = { "DELETE" } />
                     <button onClick={ () => {submitHandle("DELETE")} }> Submit </button>
-                    < ShowResultField IsShow = {shown.shownDelete} method = "DELETE" body = { node } />
+                    < ShowResultField IsShow = {shown.shownDelete} method = "DELETE" body = { LESSON } />
                     <hr></hr>
                 </div>
             </>
