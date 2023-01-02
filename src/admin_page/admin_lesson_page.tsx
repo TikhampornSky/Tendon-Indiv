@@ -17,6 +17,12 @@ interface showResultInterface {
 }
 
 var LESSON:Lesson = {} as Lesson
+LESSON = {
+    ...LESSON,
+    nodes: [],              // init array
+    prevLesson: [],
+    nextLesson: []
+}
 
 function ShowResultField(props: resultShowType) {
     if (props.IsShow === true) {
@@ -187,13 +193,13 @@ function FormLESSONComponent(props: componentType) {
         }
         onChangeHandle(props)
     };
-    const onChangeAccess = (e: React.FormEvent<HTMLInputElement>): void => {
+    const selectAccess = (e: React.ChangeEvent<HTMLSelectElement>) => {
         LESSON = {
             ...LESSON,
             access: e.currentTarget.value
         }
         onChangeHandle(props)
-    };
+      };
     const onChangeCreateBy = (e: React.FormEvent<HTMLInputElement>): void => {
         LESSON = {
             ...LESSON,
@@ -213,8 +219,13 @@ function FormLESSONComponent(props: componentType) {
                 <input type="text" onChange={ onChangeDescription } />
             </div>
             <div className='form-field'>
-                <div className='label-update'>Access: </div> 
-                <input type="text" onChange={ onChangeAccess } />
+                <div className='label-update'>Access: </div>
+                <select onChange={ selectAccess } className="access-dropdown" id="access-dropdown-id" defaultValue={'DEFAULT'}>
+                    <option value="DEFAULT" disabled>Please select your lesson's access</option>
+                    <option value="public">public</option>
+                    <option value="inviteOnly">inviteOnly</option>
+                    <option value="private">private</option>
+                </select>
             </div>
             <div className='form-field'>
                 <div className='label-update'>CreateBy: </div> 

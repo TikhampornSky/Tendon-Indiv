@@ -50,3 +50,13 @@ button:hover {
     display: inline-block;
     width: 100px;
 }
+
+.access-dropdown {
+    height: 30px;
+    width: 300px;
+    margin-right: 20px;
+    margin-left: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
