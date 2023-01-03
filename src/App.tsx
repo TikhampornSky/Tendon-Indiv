@@ -11,6 +11,8 @@ import AdminCourse from './admin_page/Admin_course';
 import ControlPage from './ControlPage';
 import ErrorPage from './Error_pages';
 
+// import DashBoardPage from './pages';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,11 +44,12 @@ const router = createBrowserRouter([
     element: < AdminLesson />,
     errorElement: <ErrorPage />,
   },
-  {
-    path: "/admin/course",
-    element: < AdminCourse />,
-    errorElement: <ErrorPage />,
-  },
+  // {
+  //   path: "/admin/course",
+  //   element: < AdminCourse />,
+  //   errorElement: <ErrorPage />,
+  // },
+  
 ]);
 
 function App() {
