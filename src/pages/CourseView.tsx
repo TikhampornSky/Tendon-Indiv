@@ -5,22 +5,17 @@ import { useState, useEffect } from "react";
 import { useTendonContainer } from "../services/container";
 import CourseDataViewModel from "./CourseViewModel";
 import { Course } from "../interfaces/TendonType";
-import { token, course_id, course_id_delete } from "../_demo_setting";
+import { token } from "../_demo_setting";
 
-export const CourseCreateHandle = observer(() => {
+interface propsInterface {
+    body: Course
+}
 
+export const CourseCreateHandle = observer((props: propsInterface) => {
+    const body = props.body
     const [courseView, setCourseView] = useState<Course>({} as Course)
     const [message, setMessage] = useState<String>("")
     const [status, setStatus] = useState<Number>(0)   
-    var body: Course = {
-        name: "NewCourse",
-        description: "CourseDescription ~ ~ ~",
-        access: "public",
-        lessons: ["63ad01bfe68081422d62efa6"],
-        createBy: "",
-        updateAt: "",
-        id: "",
-    }
     const viewModel = new CourseDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
@@ -42,6 +37,11 @@ export const CourseCreateHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p> "Course POST ERROR ZONE: " </p>
@@ -51,8 +51,8 @@ export const CourseCreateHandle = observer(() => {
     }
 })
 
-export const CourseGetHandle = observer(() => {              
-
+export const CourseGetHandle = observer((props: propsInterface) => {              
+    const course_id = props.body.id
     const [courseView, setCourseView] = useState<Course>({} as Course)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new CourseDataViewModel(useTendonContainer())
@@ -67,6 +67,11 @@ export const CourseGetHandle = observer(() => {
     })
 
     if (courseView.id === undefined) {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p>  "Course GET ERROR ZONE: " </p>
@@ -83,19 +88,11 @@ export const CourseGetHandle = observer(() => {
     )
 })
 
-export const CourseUpdateHandle = observer(() => {              
-
+export const CourseUpdateHandle = observer((props: propsInterface) => {              
+    const course_id = props.body.id
+    const body = props.body
     const [courseView, setCourseView] = useState<Course>({} as Course)  
     const [message, setMessage] = useState<String>("")
-    var body: Course = {
-        name: "NewUpdated Physics Course",
-        description: "CourseDescription 66777",
-        access: "public",
-        lessons: ["63ad01bfe68081422d62efa6"],
-        createBy: "63a6fad6e68081422d62ed24",
-        updateAt: "",
-        id: "",
-    }
     const viewModel = new CourseDataViewModel(useTendonContainer())
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
@@ -108,8 +105,14 @@ export const CourseUpdateHandle = observer(() => {
     })
 
     if (courseView.id === undefined) {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
+                <p> Update Lesson is out-of-service </p>
                 <p> "Course UPDATE ERROR ZONE: " </p>
                 <p> { message } </p>
             </div>              
@@ -118,21 +121,22 @@ export const CourseUpdateHandle = observer(() => {
 
     return (
         <div>
+            <p> Update Lesson is out-of-service </p>
             <p> [ Course UPDATE ] </p>
-            <CourseView viewModel={courseView}/>
+            <p> Updated Successfully!</p>
         </div>              
     )
 })
 
-export const CourseDeleteHandle = observer(() => { 
-
+export const CourseDeleteHandle = observer((props: propsInterface) => { 
+    const course_id = props.body.id
     const [deleteStatus, setDeleteStatus] = useState<Number>(0)  
     const [message, setMessage] = useState<String>("")
     const viewModel = new CourseDataViewModel(useTendonContainer())
 
     new Promise(function(myResolve, myReject) {
         useEffect(() => {
-            const tmpValue = viewModel.deleteCourse(course_id_delete, token)
+            const tmpValue = viewModel.deleteCourse(course_id, token)
             myResolve(tmpValue)
         }, [])
     }).then(() => {
@@ -148,6 +152,11 @@ export const CourseDeleteHandle = observer(() => {
             </div>              
         )
     } else {
+        if (message === "") {
+            return (
+                <div> Loading... </div>
+            )
+        }
         return (
             <div>
                 <p> "Course DELETE ERROR ZONE: " </p>
@@ -168,7 +177,13 @@ const CourseView = observer(( {viewModel}: ShowDataViewProps) => {
                     <p> #### {viewModel.id} #### </p>
                     <li> {viewModel.name} </li>
                     <li> {viewModel.description} </li>
-                    <li> {viewModel.lessons} </li>
+                    <li> lessons: 
+                        {viewModel.lessons.map((data: string) => (
+                            <div key= {data}>
+                                <p> {data} </p>
+                            </div>
+                        ))}
+                    </li>
                     <hr></hr>
                 </div>
         </div>

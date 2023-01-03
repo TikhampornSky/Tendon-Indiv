@@ -62,7 +62,6 @@ class CourseService {
         const config = {
             headers: { Authorization: `Bearer ${token}` }
         };
-
         try { 
             await axios.patch(`http://24.199.72.217:8080/api/v1/auth/courses/${id}`, {
                 name: body.name,

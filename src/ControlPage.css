@@ -14,6 +14,7 @@ a {
     background-color: rgb(89, 117, 239);
     color: wheat;
     padding: 25px 50px 25px;
+    border-radius: 15px;
 }
 a:hover {
     background-color: rgb(43, 64, 255);
