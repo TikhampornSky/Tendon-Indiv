@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TopNavbar from '../navbar';
 import NodePage from './admin_node_page';
 
 interface showComponentModel {
@@ -25,6 +26,7 @@ function AdminNode() {
 
   return (
     <div className="App">
+      <TopNavbar />
       <div>
         <button onClick={ () => submitHandle("Create")} className="button-shown"> CREATE </button>
         <NodePage method="CREATE" shown = {show.showCreate} />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TopNavbar from '../navbar';
 import './admin_page.css'
 import UserInputPage from './admin_user_page';
 
@@ -23,6 +24,7 @@ function AdminUser() {
   
   return (
     <div className="App">
+      <TopNavbar />
       <div>
         <button onClick={ () => submitHandle("Get")} className="button-shown"> GET </button>
         <UserInputPage method ="GET" shown = {show.showGet} />

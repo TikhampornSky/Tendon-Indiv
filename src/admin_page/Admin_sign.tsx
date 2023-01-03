@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import SignPage from './admin_sign_page';
 
-import { SignUpHandle, SignInHandle, SignOutHandle } from '../pages/SignView';
-import SignPage, { SignUpPage } from './admin_sign_page';
-import { SignInPage } from './admin_sign_page';
-import { SignOutPage } from './admin_sign_page';
-
-import { ContainerProviderTendon } from '../services/container';
+import TopNavbar from '../navbar';
 
 function AdminSign() {
 
   return (
     <div className="App">
+      <TopNavbar />
       <SignPage />
-      {/* <ContainerProviderTendon>
-        < SignUpHandle />
-        < SignInHandle />
-        < SignOutHandle />
-      </ContainerProviderTendon> */}
     </div>
   );
 }

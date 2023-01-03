@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TopNavbar from '../navbar';
 import CoursePage from './admin_course_page';
 
 interface showComponentModel {
@@ -25,6 +26,7 @@ function AdminCourse() {
 
   return (
     <div className="AdminCourse">
+      <TopNavbar />
       <div>
         <button onClick={ () => submitHandle("Create")} className="button-shown"> CREATE </button>
         <CoursePage method="CREATE" shown = {show.showCreate} />

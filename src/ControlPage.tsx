@@ -1,9 +1,11 @@
 import React from "react";
 import './ControlPage.css'
+import TopNavbar from "./navbar";
 
 export default function ControlPage() {
     return (
         <>
+            <TopNavbar></TopNavbar>
             <div id="sidebar">
             <h1 style={{color: "pink"}} > Control Page </h1>
             <nav>
