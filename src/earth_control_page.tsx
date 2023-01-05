@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from 'next/router'
 
-export default function EarthPage() {
+export default function EarthControlPage() {
     const routerNext = useRouter()
     return (
         <>

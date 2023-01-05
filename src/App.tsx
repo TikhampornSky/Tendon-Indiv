@@ -11,9 +11,8 @@ import AdminCourse from './admin_page/Admin_course';
 import ControlPage from './ControlPage';
 import ErrorPage from './Error_pages';
 
+import EarthControlPage from './earth_control_page';
 // import DashBoardPage from './pages';
-import DashBoardPage from './pages/index';
-import EarthPage from './earth_control_page';
 
 const router = createBrowserRouter([
   {
@@ -53,9 +52,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/earth",
-    element: < EarthPage />,
+    element: < EarthControlPage />,
     errorElement: <ErrorPage />,
   },
+  // {
+  //   path: "/about",
+  //   element: < DashBoardPage />,
+  //   errorElement: <ErrorPage />,
+  // },
 ]);
 
 function App() {
