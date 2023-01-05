@@ -3,6 +3,7 @@ import './ControlPage.css'
 import TopNavbar from "./navbar";
 
 export default function ControlPage() {
+
     return (
         <>
             <TopNavbar></TopNavbar>
@@ -24,6 +25,9 @@ export default function ControlPage() {
                 </p>
                 <p className="button-menu">
                     <a href={`admin/course`}> Course </a>
+                </p>
+                <p className="button-menu">
+                    <a href={`earth`}> Earth-Handle </a>
                 </p>
             </div>
             </nav>
