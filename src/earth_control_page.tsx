@@ -6,9 +6,9 @@ export default function EarthControlPage() {
     return (
         <>
             <p> Hello! </p>
-            <button type="button" onClick={() => routerNext.push('/about')}>
+            {/* <button type="button" onClick={() => routerNext.push('/about')}>
                 Click me
-            </button>
+            </button> */}
         </>
     )
 }
